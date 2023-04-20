@@ -117,6 +117,33 @@ if uploaded_file is not None:
             b64 = base64.b64encode(tsv.encode()).decode()
             href = f'<a href="data:file/tsv;base64,{b64}" download="maximum_values.tsv">Download TSV file</a>'
             st.markdown(href, unsafe_allow_html=True) 
+        
+        if st.button('Calculate Sum Values'):
+            # Calculate the sum value for each column by the first column
+            # Get the list of column names except for the first column
+            columns = [col for col in df.columns if col != df.columns[0]]
+            # Group the DataFrame by the first column and calculate the sum value for each column
+            results = []
+            for col in columns:
+                id_groups = df.groupby(df.columns[0])
+                sum_values = id_groups.sum()[col]
+                # Combine the results into a single DataFrame
+                results_df = pd.DataFrame(sum_values)
+                results_df.columns = [f"{col}_sum"]
+                # Add the results for this column to the overall results list
+                results.append(results_df)
+
+            # Combine the results for all columns into one DataFrame
+            combined_results = pd.concat(results, axis=1)
+            st.header('**Sum Value by the first column**')
+            st.write(combined_results)
+
+            # Download button for sum values
+            tsv = combined_results.reset_index().to_csv(index=True, sep='\t')
+            b64 = base64.b64encode(tsv.encode()).decode()
+            href = f'<a href="data:file/tsv;base64,{b64}" download="sum_values.tsv">Download TSV file</a>'
+            st.markdown(href, unsafe_allow_html=True)
+
             
         # Add a button to calculate the mean values
         if st.button('Calculate Mean Values'):
