@@ -118,6 +118,7 @@ if uploaded_file is not None:
             href = f'<a href="data:file/tsv;base64,{b64}" download="maximum_values.tsv">Download TSV file</a>'
             st.markdown(href, unsafe_allow_html=True) 
         
+        # Add a button to calculate the sum values
         if st.button('Calculate Sum Values'):
             # Calculate the sum value for each column by the first column
             # Get the list of column names except for the first column
@@ -143,7 +144,6 @@ if uploaded_file is not None:
             b64 = base64.b64encode(tsv.encode()).decode()
             href = f'<a href="data:file/tsv;base64,{b64}" download="sum_values.tsv">Download TSV file</a>'
             st.markdown(href, unsafe_allow_html=True)
-
             
         # Add a button to calculate the mean values
         if st.button('Calculate Mean Values'):
