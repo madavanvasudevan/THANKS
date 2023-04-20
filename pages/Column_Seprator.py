@@ -21,7 +21,7 @@ background-image: url("https://southburlingtonlibrary.org/assets/image-cache/Tee
 background-size: 120%;
 background-position: top left;
 background-repeat: no-repeat;
-background-attachment: scroll;
+background-attachment: local;
 }}
 [data-testid="stSidebar"] > div:first-child {{
 background-image: url("data:image/png;base64,{img}");
