@@ -53,11 +53,7 @@ uploaded_file = st.file_uploader(" ", type=["xlsx"])
 
 # Show the DataFrame if all columns except the first column are numeric
 if uploaded_file is not None:
-    @st.cache_data
-    def load_csv():
-        csv = pd.read_excel(uploaded_file)
-        return csv
-    df = load_csv()
+    df = pd.read_csv(uploaded_file, delimiter='\t')
     
     # Check if all columns except the first column are numeric
     if df.iloc[:, 1:].apply(lambda x: pd.to_numeric(x, errors='coerce').notnull().all()).all():
