@@ -45,10 +45,10 @@ st.title("Column Fusion")
 st.subheader("Upload a file")
 
 # Create a file uploader using Streamlit
-file = st.file_uploader(" ", type=["txt"], header=None)
+file = st.file_uploader(" ", type=["txt"])
 
 if file is not None:
-    data = pd.read_csv(file, delimiter='\t')
+    data = pd.read_csv(file, delimiter='\t', header=None)
 
     # Validate number of columns
     if data.shape[1] != 2:
