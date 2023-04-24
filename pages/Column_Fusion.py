@@ -45,7 +45,7 @@ st.title("Column Fusion")
 st.subheader("Upload a file")
 
 # Create a file uploader using Streamlit
-file2 = st.file_uploader(" ", type=["txt"])
+file2 = st.file_uploader(" ", type=["txt"], header=None)
 
 if file2 is not None:
     df = pd.read_csv(file2, delimiter='\t')
