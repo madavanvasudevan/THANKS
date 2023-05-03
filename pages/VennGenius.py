@@ -122,9 +122,11 @@ if uploaded_files is not None:
         # Display the venn diagram
         fig, ax = plt.subplots(figsize=(12,12))
         venn(up_sets, ax=ax, legend_loc="upper left", fontsize = font_size)
+        ax.set_title("UpRegulated Venn Diagram", fontsize=font_size+4)
         st.pyplot(fig)
             
         # Display the venn diagram
         fig1, ax = plt.subplots(figsize=(12,12))
         venn(down_sets, ax=ax, legend_loc="upper left", fontsize = font_size)
+        ax.set_title("DownRegulated Venn Diagram", fontsize=font_size+4)
         st.pyplot(fig1)
