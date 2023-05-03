@@ -94,17 +94,24 @@ if uploaded_files is not None:
     up_dfs = {}
     down_dfs = {}
     
-    for df_name, df in dataframes.items():
-        # Remove file extension from dataframe name
-        df_name_clean = df_name.split('.')[0]
-        
-        # Create two sub-dataframes based on the values in column 'logFC'
-        df_up = df[df['logFC'] >= 2]
-        df_down = df[df['logFC'] <= -1]
-        
-        # Store the sub-dataframes in the dictionaries
-        up_dfs[df_name_clean] = df_up
-        down_dfs[df_name_clean] = df_down
+with st.form(key='input_form'):    
+    # Ask the user for input
+    logFC_upregulator = st.number_input("Select the uplogFC threshold value:", key='logFC_upinput', min_value=0.0, step=0.1)
+    logFC_downregulator = st.number_input("Select the downlogFC threshold value:", key='logFC_downinput', min_value=-1.0, max_value=-0.1, step=0.1)
+    
+    # Add a submit button
+    submit_button = st.form_submit_button(label='Submit')
+    if submit_button:
+        for df_name, df in dataframes.items():
+            # Remove file extension from dataframe name
+            df_name_clean = df_name.split('.')[0]
+            
+            # Create two sub-dataframes based on the values in column 'logFC'
+            df_up = df[df['logFC'] >= logFC_upregulator]
+            df_down = df[df['logFC'] <= -logFC_downregulator]    
+            # Store the sub-dataframes in the dictionaries
+            up_dfs[df_name_clean] = df_up
+            down_dfs[df_name_clean] = df_down
     
     # Convert sub-dataframes to sets
     if len(up_dfs) > 0 and len(down_dfs) > 0:
