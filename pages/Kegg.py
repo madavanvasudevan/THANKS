@@ -51,16 +51,13 @@ file3 = st.file_uploader(label="hello", type=["txt"],label_visibility="collapsed
 if file3 is not None:
     # Read the uploaded file into a DataFrame
     df = pd.read_csv(file3, header=None)
-    
-    # Ask the user for input
-    pattern = input("Please enter the regex pattern to match (e.g. map\\d+): ")
 
     # Extract the "map" data from the first column and create a new column
-    df['Map'] = df.iloc[:, 0].str.extract(fr'({pattern} .+?)(?=\s*\()')
+    df['Map'] = df.iloc[:, 0].str.extract(r'(map\d+ .+?)(?=\s*\()')
     df['Map'].fillna(method='ffill', inplace=True)
 
     # Create a boolean mask based on regex pattern match in first column
-    mask = df.iloc[:, 0].str.extract(fr'({pattern} .+)').notna().squeeze()
+    mask = df.iloc[:, 0].str.extract(r'(map\d+ .+)').notna().squeeze()
 
     # Use boolean mask to select rows to be deleted and drop them
     df.drop(df[mask].index, inplace=True)
