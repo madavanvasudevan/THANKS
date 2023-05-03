@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-from venn import venn, get_labels
+from venn import venn
 import matplotlib.pyplot as plt
 import os
 import base64
