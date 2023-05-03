@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import os
 import base64
 
+
 st.set_page_config(layout="wide")
 
 @st.cache_data
