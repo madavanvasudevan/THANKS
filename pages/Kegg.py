@@ -46,7 +46,7 @@ st.title("kegg annotation")
 st.subheader("Upload a file")
 
 # Create a file uploader using Streamlit
-file3 = st.file_uploader(" ", type=["txt"])
+file3 = st.file_uploader(label="hello", type=["txt"],label_visibility="collapsed")
 
 if file3 is not None:
     # Read the uploaded file into a DataFrame

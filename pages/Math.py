@@ -49,7 +49,7 @@ st.markdown('''
 st.subheader("Upload a file")
 
 # Create a file uploader using Streamlit
-uploaded_file = st.file_uploader(" ", type=["xlsx"])
+uploaded_file = st.file_uploader(label="hello", type=["xlsx"],label_visibility="collapsed")
 
 # Show the DataFrame if all columns except the first column are numeric
 if uploaded_file is not None:
