@@ -108,7 +108,7 @@ with st.form(key='input_form'):
             
             # Create two sub-dataframes based on the values in column 'logFC'
             df_up = df[df['logFC'] >= logFC_upregulator]
-            df_down = df[df['logFC'] <= -logFC_downregulator]    
+            df_down = df[df['logFC'] <= logFC_downregulator]    
             # Store the sub-dataframes in the dictionaries
             up_dfs[df_name_clean] = df_up
             down_dfs[df_name_clean] = df_down
