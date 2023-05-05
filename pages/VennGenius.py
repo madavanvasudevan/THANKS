@@ -97,7 +97,7 @@ if uploaded_files is not None:
 with st.form(key='input_form'):    
     # Ask the user for input
     logFC_upregulator = st.number_input("Select the uplogFC threshold value:", key='logFC_upinput', min_value=0.0, step=0.1)
-    logFC_downregulator = st.number_input("Select the downlogFC threshold value:", key='logFC_downinput', min_value=-1000.00, max_value=-0.1, step=-0.1)
+    logFC_downregulator = st.number_input("Select the downlogFC threshold value:", key='logFC_downinput', min_value=-1e6, max_value=-0.1, step=-0.1, value=-0.1)
     
     # Add a submit button
     submit_button = st.form_submit_button(label='Submit')
