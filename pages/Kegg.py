@@ -50,7 +50,7 @@ file3 = st.file_uploader(label="hello", type=["txt"],label_visibility="collapsed
 
 if file3 is not None:
     # Read the uploaded file into a DataFrame
-    df = pd.read_csv(file3, header=None)
+    df = pd.read_csv(file3, delimiter='None', header=None)
 
     # Extract the "map" data from the first column and create a new column
     df['Map'] = df.iloc[:, 0].str.extract(r'(map\d+ .+?)(?=\s*\()')
