@@ -127,7 +127,7 @@ if file is not None:
     # st.markdown(grid_response['data'].to_html(), unsafe_allow_html=True)
     
     # Add a download button to the Streamlit app
-    if st.button('Download filtered data'):
+    if st.button('Proceed to Download'):
         filename = "filtered_data"
         csv = grid_response['data'].to_csv(index=False)
         b64 = base64.b64encode(csv.encode()).decode()
