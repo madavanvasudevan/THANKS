@@ -20,6 +20,7 @@ image_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREh-y7VJtrA03
 st.write("<p style='text-align:right;'><img src='"+image_url+"' width=250 height=175></p>",unsafe_allow_html=True)
 
 st.title("Filter_Data")
+st.subheader("Upload your files")
 
 # Define a function that creates a download link for a DataFrame
 def create_download_link(df, filename):
