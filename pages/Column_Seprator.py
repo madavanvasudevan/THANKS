@@ -51,9 +51,9 @@ if file is not None:
     data = pd.read_csv(file, delimiter='\t', header=None)
 
     # Validate number of columns
-    if data.shape[1] != 2:
-        st.error("Error: The file must contain exactly 2 columns.")
-        st.stop()
+#     if data.shape[1] != 2:
+#         st.error("Error: The file must contain exactly 2 columns.")
+#         st.stop()
 
     # Check for duplicate values in the first column
     duplicate_values = data[data.columns[0]].duplicated()
