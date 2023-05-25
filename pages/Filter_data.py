@@ -60,7 +60,7 @@ if file is not None:
     last_column_name = error_list[-1]
     last_column_index = pd.Index(df.columns).get_loc(last_column_name)
     for i in range(last_column_index + 2, len(df.columns), 2):
-        if (df.iloc[:, i] > 0).all():
+        if (df.iloc[:, i] >= 0).all():
             continue
         else:
             st.error(f"Error: Not all values in column '{df.columns[i]}' are positive.")
