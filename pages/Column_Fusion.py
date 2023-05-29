@@ -26,6 +26,9 @@ st.subheader("Upload a file")
 # Create a file uploader using Streamlit
 file2 = st.file_uploader(label="hello", type=["txt"], label_visibility="collapsed")
 
+st.write("[Sample-Input](https://drive.google.com/file/d/16MiqpKw0Fm9j38fWf3TIH2elr3nlE2aP/view?usp=sharing)")
+st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1i473hOKzOAW6XICDAImjEIGN8XZ8b8u3/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
+   
 if file2 is not None:
     df = pd.read_csv(file2, delimiter='\t', header=None)
 
