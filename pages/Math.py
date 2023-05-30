@@ -30,6 +30,9 @@ st.subheader("Upload a file")
 # Create a file uploader using Streamlit
 uploaded_file = st.file_uploader(label="hello", type=["xlsx"],label_visibility="collapsed")
 
+st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1TeNzqgGVBdxoAVJeHiWoopngFyut9uUu/edit?usp=share_link&ouid=103232618408666892680&rtpof=true&sd=true)")
+st.write("[Sample-Output](https://drive.google.com/file/d/1fmmqgGaZQ-J8OwGyOI3fLsTZMoYrELNR/view?usp=share_link)")
+
 # Show the DataFrame if all columns except the first column are numeric
 if uploaded_file is not None:
     df = pd.read_excel(uploaded_file)
