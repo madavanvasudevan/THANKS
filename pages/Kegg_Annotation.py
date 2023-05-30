@@ -30,6 +30,8 @@ st.write("<p style='text-align:right;'><img src='"+image_url+"' width=250 height
 st.title("KEGG Annotation")
 st.subheader("Upload a file")
 file3 = st.file_uploader(label="Select a file", type=["txt"], label_visibility="collapsed")
+st.write("[Sample-Input](https://drive.google.com/file/d/14jzsr3Xl6Ekfim1EtWGW5fTDDStSoAvv/view?usp=share_link)")
+st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1cUAqGNQXzRswIsrQ5EeyRc68mVQrWJUb/edit?usp=share_link&ouid=103232618408666892680&rtpof=true&sd=true)")
 
 if file3 is not None:
     # Read the uploaded file into a DataFrame
