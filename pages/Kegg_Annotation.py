@@ -69,7 +69,7 @@ if file3 is not None:
         st.markdown(download_excel(df), unsafe_allow_html=True)
 
         # Display the processed data in a table
-        st.title("Data Processing with Streamlit")
+        st.subheader("Data Processing with Streamlit")
         st.write("Processed Data:")
         st.dataframe(df)
 
