@@ -39,39 +39,39 @@ if file3 is not None:
     
     # Create an input field for the "map" data
     map_data = st.text_input("Enter map data (e.g., map123): ")
+    if map_data:
+        # Escape special characters in the user input
+        escaped_map_data = re.escape(map_data)
 
-    # Escape special characters in the user input
-    escaped_map_data = re.escape(map_data)
+        # Extract the "map" data from the first column and create a new column
+        df['Map'] = df.iloc[:, 0].str.extract('(' + escaped_map_data + r'\d+ .+?)(?=\s*\()(?!.*:)')
+        df['Map'].fillna(method='ffill', inplace=True)
 
-    # Extract the "map" data from the first column and create a new column
-    df['Map'] = df.iloc[:, 0].str.extract('(' + escaped_map_data + r'\d+ .+?)(?=\s*\()(?!.*:)')
-    df['Map'].fillna(method='ffill', inplace=True)
+        # Create a boolean mask based on regex pattern match in first column
+        mask = df.iloc[:, 0].str.extract('(' + escaped_map_data + r'\d+ .+)').notna().squeeze()
 
-    # Create a boolean mask based on regex pattern match in first column
-    mask = df.iloc[:, 0].str.extract('(' + escaped_map_data + r'\d+ .+)').notna().squeeze()
+        # Use boolean mask to select rows to be deleted and drop them
+        df.drop(df[mask].index, inplace=True)
 
-    # Use boolean mask to select rows to be deleted and drop them
-    df.drop(df[mask].index, inplace=True)
-    
-    # Drop rows with missing values in the 'Map' column
-    df.dropna(subset=[0], inplace=True)
+        # Drop rows with missing values in the 'Map' column
+        df.dropna(subset=[0], inplace=True)
 
-    # Create a function to download the processed data as an Excel file
-    def download_excel(data):
-        excel_file = BytesIO()
-        df.to_excel(excel_file, index=False)
-        excel_file.seek(0)
-        b64 = base64.b64encode(excel_file.read()).decode()
-        href = f'<a href="data:application/octet-stream;base64,{b64}" download="output.xlsx">Download Excel file</a>'
-        return href
+        # Create a function to download the processed data as an Excel file
+        def download_excel(data):
+            excel_file = BytesIO()
+            df.to_excel(excel_file, index=False)
+            excel_file.seek(0)
+            b64 = base64.b64encode(excel_file.read()).decode()
+            href = f'<a href="data:application/octet-stream;base64,{b64}" download="output.xlsx">Download Excel file</a>'
+            return href
 
-    # Display the download button for the Excel file
-    st.markdown(download_excel(df), unsafe_allow_html=True)
+        # Display the download button for the Excel file
+        st.markdown(download_excel(df), unsafe_allow_html=True)
 
-    # Display the processed data in a table
-    st.title("Data Processing with Streamlit")
-    st.write("Processed Data:")
-    st.dataframe(df)
+        # Display the processed data in a table
+        st.title("Data Processing with Streamlit")
+        st.write("Processed Data:")
+        st.dataframe(df)
 
 # else:
 #     st.markdown("You need to log in to access this page.")
