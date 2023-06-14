@@ -25,7 +25,7 @@ st.subheader("Upload your files")
 def download_csv(df):
     csv = df.to_csv(index=False, header=False)  # Added index=False and header=False
     b64 = base64.b64encode(csv.encode()).decode()  # Encoding the CSV data
-    href = f'<a href="data:file/csv;base64,{b64}" download="Provider_Values.txt">Download CSV file</a>'
+    href = f'<a href="data:file/csv;base64,{b64}" download="SNP_Heatmap_Values.txt">Download CSV file</a>'
     return href
 # Create a file uploader using Streamlit
 file = st.file_uploader(label="hello", type=["txt"], label_visibility="collapsed")
@@ -34,17 +34,11 @@ file = st.file_uploader(label="hello", type=["txt"], label_visibility="collapsed
 if file is not None:
     try:
         df = pd.read_csv(file, delimiter='\t')
-        # Assuming you have a DataFrame named 'df' with multiple columns
-        # selected_columns = st.multiselect("Select columns", data.columns)
-        # df = data[selected_columns].sort_index(axis=1)
-        # column_name = df.columns
-        selected_columns = st.multiselect("Select columns", df.columns)
-
-        if selected_columns:
-            df = df[selected_columns].sort_index(axis=1)
-        else:
-            st.warning("Please select the Three columns.")
+        # Assuming you have a dataframe named 'df' with multiple columns
+        selected_columns = ['Variant_Loci', 'Variant_Allele', 'RSID']
+        df = df[selected_columns].sort_index(axis=1)
         column_name = df.columns
+        
         df = df.dropna(subset=[column_name[0]]).copy()
         df = df.sort_values(by=[column_name[2], column_name[0]])
         df['variant_loci'] = df[column_name[2]].str.split('-').str[1]
