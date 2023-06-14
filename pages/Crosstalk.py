@@ -25,7 +25,7 @@ st.subheader("Upload your files")
 # Define a function that creates a download link for a DataFrame
 def download(df):
     output = io.BytesIO()
-    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+    with pd.ExcelWriter(output, engine='openpyxl') as writer:
         df.to_excel(writer, index=False)  # Export DataFrame to Excel format
         writer.save()
     excel_data = output.getvalue()
