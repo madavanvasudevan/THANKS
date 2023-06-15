@@ -29,8 +29,8 @@ def download_csv(df):
     return href
 # Create a file uploader using Streamlit
 file = st.file_uploader(label="hello", type=["txt"], label_visibility="collapsed")
-# st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1pQP-InV1VBTYVvQaYxak26_5Tm15bKI4/edit?usp=share_link&ouid=103232618408666892680&rtpof=true&sd=true)")
-# st.write("[Sample-Output](https://drive.google.com/file/d/1wiWWTo6OK2qy75tnD7WQb6GooGXKWVCq/view?usp=share_link)")
+st.write("[Sample-Input](https://drive.google.com/file/d/1zE60ETTTy4NB4mIQ1XPRoR8LjWn7JCUx/view?usp=sharing)")
+st.write("[Sample-Output](https://drive.google.com/file/d/134t0kvOyzXO_P5YaIRHGS0azdrL6IVyA/view?usp=sharing)")
 if file is not None:
     try:
         df = pd.read_csv(file, delimiter='\t')
