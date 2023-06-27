@@ -30,7 +30,7 @@ def create_download_link(df, filename):
     return href
 
 # Create a file uploader using Streamlit
-file = st.file_uploader(label="hello", type=["xlsx"], label_visibility="collapsed")
+file = st.file_uploader(label="hello", type=["xlsx","txt"], label_visibility="collapsed")
 st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1pQP-InV1VBTYVvQaYxak26_5Tm15bKI4/edit?usp=share_link&ouid=103232618408666892680&rtpof=true&sd=true)")
 st.write("[Sample-Output](https://drive.google.com/file/d/1wiWWTo6OK2qy75tnD7WQb6GooGXKWVCq/view?usp=share_link)")
 
