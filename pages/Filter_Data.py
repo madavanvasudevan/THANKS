@@ -35,7 +35,14 @@ st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1pQP-InV1VBTYVvQ
 st.write("[Sample-Output](https://drive.google.com/file/d/1wiWWTo6OK2qy75tnD7WQb6GooGXKWVCq/view?usp=share_link)")
 
 if file is not None:
-    df = pd.read_csv(file)
+    if file.endswith('.xlsx') or file.endswith('.xls'):
+            # Read Excel file
+            df = pd.read_excel(file)
+    elif file.endswith('.csv'):
+            # Read CSV file
+            df = pd.read_csv(file)
+    else:
+            raise ValueError("Unsupported file format. Only Excel (.xlsx/.xls) and CSV (.csv) are supported.")
 # Check if the first column contains alphanumeric values
     if not df.iloc[:, 0].apply(lambda x: isinstance(x, (int, float, complex, str))).all():
         st.error("Error: The first column must contain alphanumeric values.")
