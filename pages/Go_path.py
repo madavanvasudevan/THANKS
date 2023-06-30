@@ -47,6 +47,8 @@ def label_value(value):
 file = st.file_uploader(label="hello", type=["xlsx"], label_visibility="collapsed")
 st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1vGKInt4xUTVAx3ioc2HnbtyqSwZYUmT4/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1rvCMP9VUZoCI3b1fVXxQaFqJkpZ_XXU1/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
+st.write("[Example-Plots](https://docs.google.com/spreadsheets/d/1MLteFvllUoiBob-F43xKcJ3GYIT0_9Ob/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
+
 if file is not None:
     try:
         df = pd.read_excel(file)
