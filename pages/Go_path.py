@@ -2,6 +2,7 @@ import base64
 import numpy as np
 import pandas as pd
 import streamlit as st
+from io import BytesIO
 
 st.set_page_config(layout="wide")
 
@@ -26,13 +27,14 @@ st.write("<p style='text-align:right;'><img src='"+image_url+"' width=250 height
 st.title("Go_path")
         
 st.subheader("Upload your files")
-
 # Define a function that creates a download link for a DataFrame
-def download_csv(result):
-    csv = result.to_csv(index=False, header=False)  # Added index=False and header=False
-    b64 = base64.b64encode(csv.encode()).decode()  # Encoding the CSV data
-    href = f'<a href="data:file/csv;base64,{b64}" download="Gopath_out.txt">Download CSV file</a>'
-    return href
+def download_excel(result):
+            excel_file = BytesIO()
+            result.to_excel(excel_file, index=False)
+            excel_file.seek(0)
+            b64 = base64.b64encode(excel_file.read()).decode()
+            href = f'<a href="data:application/octet-stream;base64,{b64}" download="Gopath_out.xlsx">Download Excel file</a>'
+            return href
 # Function to label values
 def label_value(value):
     if value <= -2:
@@ -92,7 +94,7 @@ if file is not None:
         result['logFC'] = np.log2(result['up_count'] / result['down_count'])
         
         # Create a download link
-        st.markdown(download_csv(result), unsafe_allow_html=True)
+        st.markdown(download_excel(result), unsafe_allow_html=True)
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
 
