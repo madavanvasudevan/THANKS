@@ -27,11 +27,13 @@ st.title("Bubbles")
 st.subheader("Upload your files")
 
 # Define a function that creates a download link for a DataFrame
-def download_csv(data):
-    csv = data.to_csv(index=False, header=False)  # Added index=False and header=False
-    b64 = base64.b64encode(csv.encode()).decode()  # Encoding the CSV data
-    href = f'<a href="data:file/csv;base64,{b64}" download="Bubbles_out.txt">Download CSV file</a>'
-    return href
+def download_excel(data):
+            excel_file = BytesIO()
+            data.to_excel(excel_file, index=False)
+            excel_file.seek(0)
+            b64 = base64.b64encode(excel_file.read()).decode()
+            href = f'<a href="data:application/octet-stream;base64,{b64}" download="Bubbles_out.xlsx">Download Excel</a>'
+            return href
 # Create a file uploader using Streamlit
 file = st.file_uploader(label="hello", type=["xlsx"], label_visibility="collapsed")
 st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1YW7njIXQcjdP2RZsjHn2kHlzy5T1PUOO/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
@@ -56,8 +58,8 @@ if file is not None:
 
         # Group the sorted DataFrame by 'class' column and get the top 5 rows for each group
         data = df_sorted.groupby('class').head(5)
-        # Create a download link
-        st.markdown(download_csv(data), unsafe_allow_html=True)
+        # Create a download button
+        st.markdown(download_excel(data), unsafe_allow_html=True)
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
 
