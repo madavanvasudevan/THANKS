@@ -33,8 +33,8 @@ def download_csv(data):
     href = f'<a href="data:file/csv;base64,{b64}" download="Vlook_output.txt">Download CSV file</a>'
     return href
 # Create a file uploader using Streamlit
-file = st.file_uploader(label="hello", type=["xlsx"], label_visibility="collapsed")
-file1 = st.file_uploader(label="hello", type=["txt"], label_visibility="collapsed")
+file = st.file_uploader(label="upload your excel file with gene names/values", type=["xlsx"])
+file1 = st.file_uploader(label="upload the main text file", type=["txt"])
 # st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1pQP-InV1VBTYVvQaYxak26_5Tm15bKI4/edit?usp=share_link&ouid=103232618408666892680&rtpof=true&sd=true)")
 # st.write("[Sample-Output](https://drive.google.com/file/d/1wiWWTo6OK2qy75tnD7WQb6GooGXKWVCq/view?usp=share_link)")
 if file1 is not None:
