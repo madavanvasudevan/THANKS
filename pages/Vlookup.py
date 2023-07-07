@@ -28,7 +28,7 @@ st.subheader("Upload your files")
 
 # Define a function that creates a download link for a DataFrame
 def download_csv(data):
-    csv = data.to_csv(index=False, header=False)  # Added index=False and header=False
+    csv = data.to_csv(index=False)  # Added index=False and header=False
     b64 = base64.b64encode(csv.encode()).decode()  # Encoding the CSV data
     href = f'<a href="data:file/csv;base64,{b64}" download="Vlook_output.txt">Download CSV file</a>'
     return href
