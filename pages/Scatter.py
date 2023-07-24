@@ -43,19 +43,17 @@ if file is not None:
     try:
         df = pd.read_excel(file)
 
-        n = st.number_input("Enter the number of ", min_value=1, max_value=len(df.columns)//2, step=1, value=3)
+        n = st.number_input("Enter a number (n)", min_value=1, max_value=len(df.columns)//2, step=1, value=3)
+        selected_columns = list(range(2, (2*n)+2, 2))
 
-        if st.button("Calculate selected columns"):
-            selected_columns = list(range(2, (2*n)+2, 2))
+        df = df.iloc[:, selected_columns]
 
-            df = df.iloc[:, selected_columns]
+        d = st.multiselect("Select columns to filter:", df.columns, max_selections=2)
 
-            d = st.multiselect("Select columns to filter:", df.columns, max_selections=2)
+        data = df[d]
 
-            data = df[d]
-
-            # Create a download button
-            st.markdown(download_excel(data), unsafe_allow_html=True)
+        # Create a download button
+        st.markdown(download_excel(data), unsafe_allow_html=True)
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
 
