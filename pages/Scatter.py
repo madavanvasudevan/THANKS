@@ -51,7 +51,7 @@ if file is not None:
         d = st.multiselect("Select columns to filter:", df.columns, max_selections=2)
 
         data = df[d]
-
+        st.write(data)
         # Create a download button
         st.markdown(download_excel(data), unsafe_allow_html=True)
     except Exception as e:
