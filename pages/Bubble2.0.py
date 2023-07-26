@@ -55,7 +55,7 @@ if file is not None:
         df.columns = new_names
 
         # Sort the DataFrame by 'count' column in descending order
-        df_sorted = df.sort_values(by='count', ascending=False)
+        data = df.sort_values(by='count', ascending=False)
         # Create a download button
         st.markdown(download_excel(data), unsafe_allow_html=True)
     except Exception as e:
