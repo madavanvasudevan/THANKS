@@ -63,7 +63,8 @@ if file is not None:
         height=400, 
         width='100%',
         data_return_mode=return_mode_value, 
-        update_mode=update_mode_value
+        update_mode=update_mode_value,
+        horizontal_scrollbar=True
         )
 
     sorted_df = grid_response['data']
