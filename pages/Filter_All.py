@@ -61,7 +61,7 @@ if file is not None:
         sorted_df, 
         gridOptions=gridOptions,
         height=400, 
-        width=80%,
+        width='80%',
         data_return_mode=return_mode_value, 
         update_mode=update_mode_value
         )
