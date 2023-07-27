@@ -36,12 +36,12 @@ def download_excel(data):
             href = f'<a href="data:application/octet-stream;base64,{b64}" download="Bubbles_out.xlsx">Download Excel</a>'
             return href
 # Create a file uploader using Streamlit
-file = st.file_uploader(label="hello", type=["xlsx"], label_visibility="collapsed")
+file1 = st.file_uploader(label="hello", type=["xlsx"], label_visibility="collapsed")
 st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1HKCUiqTlOBpx8BrE60fBoxw9-iCdGDRL/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1YtGlKsGDfmfbL5iDrt6LFMzhl6yiGEUS/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 if file is not None:
     try:
-        df = pd.read_excel(file)
+        df = pd.read_excel(file1)
         # Assuming you have a dataframe named 'df' with multiple columns
         selected_columns = ['Category', 'Term', 'Count','PValue','Fold Enrichment']
         new_names = ['count', 'enrichment', 'pvalue', 'pathway', 'class']
