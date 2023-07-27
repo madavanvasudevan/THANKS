@@ -39,7 +39,7 @@ def download_excel(data):
 file1 = st.file_uploader(label="hello", type=["xlsx"], label_visibility="collapsed")
 st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1HKCUiqTlOBpx8BrE60fBoxw9-iCdGDRL/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1YtGlKsGDfmfbL5iDrt6LFMzhl6yiGEUS/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
-if file is not None:
+if file1 is not None:
     try:
         df = pd.read_excel(file1)
         # Assuming you have a dataframe named 'df' with multiple columns
