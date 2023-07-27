@@ -75,8 +75,8 @@ uploaded_files = st.file_uploader(
     accept_multiple_files=True
 )
 st.write("User Can input up-to 6 files but the file should be in the format of sample input")
-st.write("[Sample-Input]()")
-st.write("[Sample-Output]()")
+st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1dVtTVpuDgVLeVv4lgvoYH8zMc5Y5AfaQ/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
+st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1K0HRInvjFL2_aiK9jRoKTa8Dq43kfFtx/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 
 if uploaded_files is not None:
     # Call the create_dataframes function to create dataframes for all uploaded files
