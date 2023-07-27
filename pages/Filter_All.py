@@ -98,7 +98,7 @@ if file is not None:
         width='100%',
         data_return_mode=return_mode_value, 
         update_mode=update_mode_value,
-        # fit_columns_on_grid_load=fit_columns_on_grid_load,
+        fit_columns_on_grid_load=fit_columns_on_grid_load,
         )
 
     sorted_df = grid_response['data']
