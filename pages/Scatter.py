@@ -37,6 +37,7 @@ def download_excel(data):
             return href
 # Create a file uploader using Streamlit
 file = st.file_uploader(label="hello", type=["xlsx"], label_visibility="collapsed")
+st.write('User can use this app to plot :Scatter,M6a Scatter, Quadrant Scatter')
 st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1OcfdHNd2rQHpu93b0dkh21rEfcIqGoej/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1lj463Ev7cV0MQ9qC9-tla8y2xULSwj2k/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 if file is not None:
@@ -46,11 +47,13 @@ if file is not None:
         n = st.number_input("Enter a number (n)", min_value=1, max_value=len(df.columns)//2, step=1, value=3)
         selected_columns = list(range(2, (2*n)+2, 2))
 
-        df = df.iloc[:, selected_columns]
+        d = df.iloc[:, selected_columns]
 
-        d = st.multiselect("Select columns to filter:", df.columns, max_selections=2)
+        d = st.multiselect("Select columns to filter:", d.columns)
 
         data = df[d]
+        data["Gene"] = df.iloc[:, 1]
+
         st.write(data)
         # Create a download button
         st.markdown(download_excel(data), unsafe_allow_html=True)
