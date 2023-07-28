@@ -33,7 +33,7 @@ def download(df):
     return href
 
 # Create a file uploader using Streamlit
-file = st.file_uploader(label="hello", type=["xlsx"], label_visibility="collapsed")
+file = st.file_uploader(label="hello", type=["xlsx"], label_visibility="collapsed",key="Crosstalk")
 st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/18eQ_n_lP6VEh56U5fQ6YIqFR7pjRrfax/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1hguFNoZO5CX2Eu0UKwbX53-Kwe1gbEyt/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 if file is not None:
