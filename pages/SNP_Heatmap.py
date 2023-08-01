@@ -28,7 +28,7 @@ def download_csv(df):
     href = f'<a href="data:file/csv;base64,{b64}" download="SNP_Heatmap_Values.txt">Download CSV file</a>'
     return href
 # Create a file uploader using Streamlit
-file = st.file_uploader(label="hello", type=["txt"], label_visibility="collapsed")
+file = st.file_uploader(label="hello", type=["txt"], label_visibility="collapsed",key="SNP")
 st.write("[Sample-Input](https://drive.google.com/file/d/1zE60ETTTy4NB4mIQ1XPRoR8LjWn7JCUx/view?usp=sharing)")
 st.write("[Sample-Output](https://drive.google.com/file/d/134t0kvOyzXO_P5YaIRHGS0azdrL6IVyA/view?usp=sharing)")
 if file is not None:
