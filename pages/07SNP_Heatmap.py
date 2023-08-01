@@ -55,6 +55,7 @@ if file is not None:
         new_data = new_data.drop(column_name[2], axis=1)
         transposed_df = new_data.T
         df_filled = transposed_df.fillna("N/A")
+        st.write(df_filled)
         # Create a download link
         st.markdown(download_csv(df_filled), unsafe_allow_html=True)
     except Exception as e:
