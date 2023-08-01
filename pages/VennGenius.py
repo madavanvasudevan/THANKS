@@ -61,7 +61,8 @@ uploaded_files = st.file_uploader(
     label="hi",
     type="xlsx",
     label_visibility="collapsed",
-    accept_multiple_files=True
+    accept_multiple_files=True,
+    key="VennGenius"
 )
 st.write("User Can input up-to 6 files but the file should be in the format of sample input")
 st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1BJcJ2djLZTbQv-yA0UFJHbsIvZclc8FW/edit?usp=share_link&ouid=103232618408666892680&rtpof=true&sd=true)")
