@@ -23,7 +23,7 @@ st.write("<p style='text-align:right;'><img src='"+image_url+"' width=250 height
 
 # Web App Title
 st.markdown('''
-# **Venn_mini**
+# **Venn_Plot**
 ''')
 
 st.subheader("Upload your files")
