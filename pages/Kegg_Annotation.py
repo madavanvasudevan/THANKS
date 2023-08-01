@@ -7,10 +7,6 @@ from io import BytesIO
 # Set Streamlit page configuration
 st.set_page_config(layout="wide")
 
-# # Check if the user is logged in
-# if st.session_state.get('logged_in', False):
-#     st.markdown("Welcome to the protected page!")
-
 # Define a function to convert an image file to base64
 @st.cache_data()
 def get_img_as_base64(file):
@@ -29,7 +25,7 @@ st.write("<p style='text-align:right;'><img src='"+image_url+"' width=250 height
 # Title and file uploader
 st.title("KEGG Annotation")
 st.subheader("Upload a file")
-file3 = st.file_uploader(label="Select a file", type=["txt"], label_visibility="collapsed")
+file3 = st.file_uploader(label="Select a file", type=["txt"], label_visibility="collapsed",key="Kegg")
 st.write("[Sample-Input](https://drive.google.com/file/d/14jzsr3Xl6Ekfim1EtWGW5fTDDStSoAvv/view?usp=share_link)")
 st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1cUAqGNQXzRswIsrQ5EeyRc68mVQrWJUb/edit?usp=share_link&ouid=103232618408666892680&rtpof=true&sd=true)")
 
@@ -72,7 +68,3 @@ if file3 is not None:
         st.subheader("Data Processing with Streamlit")
         st.write("Processed Data:")
         st.dataframe(df)
-
-# else:
-#     st.markdown("You need to log in to access this page.")
-#     # Display a message or redirect the user to the login page
