@@ -46,10 +46,13 @@ if file is not None:
         selected_columns = list(range(2, (2*n)+2, 2))
         
         d = df.iloc[:, selected_columns]
-
-        d = st.multiselect("Select columns to filter:", d.columns)
         
-        data = df[[selected_column] + df[d]]
+        # Get user input for selecting specific columns from DataFrame d
+        selected_d_columns = st.multiselect("Select columns to filter:", d.columns)
+        
+        # Create the final DataFrame data by combining the selected gene column with the chosen columns from d
+        data = d[[selected_column] + selected_d_columns]
+        
         st.write(data)
         # Create a download button
         st.markdown(download_excel(data), unsafe_allow_html=True)
