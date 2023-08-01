@@ -32,7 +32,7 @@ def download_excel(data):
             return href
 # Create a file uploader using Streamlit
 file = st.file_uploader(label="hello", type=["xlsx"], label_visibility="collapsed",key="Scatter")
-st.write('Users can use this app to plot scatter, m6a scatter,quadrant scatter')
+st.write('Users can use this app to plot scatter, m6a scatter,quadrant scatter, upset_r')
 st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1OcfdHNd2rQHpu93b0dkh21rEfcIqGoej/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1lj463Ev7cV0MQ9qC9-tla8y2xULSwj2k/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 if file is not None:
