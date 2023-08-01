@@ -5,11 +5,6 @@ from io import BytesIO
 
 st.set_page_config(layout="wide")
 
-# Check if the user is logged in
-# if st.session_state.get('logged_in', False):
-#     # st.markdown("Welcome to the protected page!")
-#     # Display the contents of the protected page
-
 def get_img_as_base64(file):
     with open(file, "rb") as f:
         data = f.read()
@@ -36,7 +31,7 @@ def download_excel(data):
             href = f'<a href="data:application/octet-stream;base64,{b64}" download="output.xlsx">Download Excel file</a>'
             return href
 # Create a file uploader using Streamlit
-file = st.file_uploader(label="hello", type=["xlsx"], label_visibility="collapsed")
+file = st.file_uploader(label="hello", type=["xlsx"], label_visibility="collapsed",key="Heatmap")
 st.write('Users can use this app to plot: heatmap,circular_heatmap,correlation coefficient')
 st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/18GRS4nCIa0gtWJPO-fRSDVU-y81V1_q_/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1ePqmO6YCP9UYO-cwt-3F7rVm6mkXboQp/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
@@ -65,7 +60,3 @@ if file is not None:
                 st.error("Invalid input format. Please use the format 'start-end' (e.g., 1-3).")
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
-
-# else:
-#     st.markdown("You need to log in to access this page.")
-#     # Display a message or redirect the user to the login page
