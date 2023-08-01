@@ -47,13 +47,6 @@ if file is not None:
         
         data = df[[selected_column] + df.columns[selected_columns].tolist()]
         st.write(data)
-
-        d = st.multiselect("Select columns to filter:", d.columns)
-
-        data = df[d]
-        data["Gene"] = df.iloc[:, 1]
-
-        st.write(data)
         # Create a download button
         st.markdown(download_excel(data), unsafe_allow_html=True)
     except Exception as e:
