@@ -6,11 +6,6 @@ from io import BytesIO
 
 st.set_page_config(layout="wide")
 
-# Check if the user is logged in
-# if st.session_state.get('logged_in', False):
-#     # st.markdown("Welcome to the protected page!")
-#     # Display the contents of the protected page
-
 def get_img_as_base64(file):
     with open(file, "rb") as f:
         data = f.read()
@@ -99,7 +94,3 @@ if file is not None:
         st.markdown(download_excel(result), unsafe_allow_html=True)
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
-
-# else:
-#     st.markdown("You need to log in to access this page.")
-#     # Display a message or redirect the user to the login page
