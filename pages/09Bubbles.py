@@ -54,6 +54,7 @@ if file is not None:
 
         # Group the sorted DataFrame by 'class' column and get the top 5 rows for each group
         data = df_sorted.groupby('class').head(5)
+        st.write(data)
         # Create a download button
         st.markdown(download_excel(data), unsafe_allow_html=True)
     except Exception as e:
