@@ -75,7 +75,7 @@ uploaded_files = st.file_uploader(
     accept_multiple_files=True,
     key="VennMini"
 )
-st.write("User Can input up-to 6 files but the file should be in the format of sample input")
+st.write("User Can input multiple files but the file should have same column name in all the file")
 st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1dVtTVpuDgVLeVv4lgvoYH8zMc5Y5AfaQ/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1K0HRInvjFL2_aiK9jRoKTa8Dq43kfFtx/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 
