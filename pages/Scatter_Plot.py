@@ -51,7 +51,7 @@ if file is not None:
         selected_d_columns = st.multiselect("Select columns to filter:", d.columns)
         
         # Create the final DataFrame data by combining the selected gene column with the chosen columns from d
-        data = d[[selected_column] + selected_d_columns]
+        data = df[[selected_column] + selected_d_columns]
         
         st.write(data)
         # Create a download button
