@@ -40,9 +40,9 @@ if file is not None:
         df = pd.read_excel(file)
         # Get user input for selecting a specific column
         column_options = list(df.columns)
-        selected_column = st.selectbox("Select a column", column_options)
+        selected_column = st.selectbox("Select The Gene_column", column_options)
         
-        n = st.number_input("Enter a number (n)", min_value=1, max_value=len(df.columns)//2, step=1, value=3)
+        n = st.number_input("Enter a number of rows need to download (n)", min_value=1, max_value=len(df.columns)//2, step=1, value=3)
         selected_columns = list(range(2, (2*n)+2, 2))
         
         data = df[[selected_column] + df.columns[selected_columns].tolist()]
