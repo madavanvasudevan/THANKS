@@ -4,11 +4,6 @@ import streamlit as st
 
 st.set_page_config(layout="wide")
 
-# Check if the user is logged in
-# if st.session_state.get('logged_in', False):
-#     # st.markdown("Welcome to the protected page!")
-#     # Display the contents of the protected page
-
 def get_img_as_base64(file):
     with open(file, "rb") as f:
         data = f.read()
@@ -33,8 +28,8 @@ def download_csv(data):
     href = f'<a href="data:file/csv;base64,{b64}" download="Vlook_output.txt">Download CSV file</a>'
     return href
 # Create a file uploader using Streamlit
-file = st.file_uploader(label="upload your excel file with gene names/values", type=["xlsx"])
-file1 = st.file_uploader(label="upload the main text file", type=["txt"])
+file = st.file_uploader(label="upload your excel file with gene names/values", type=["xlsx"],key="Vlookup0")
+file1 = st.file_uploader(label="upload the main text file", type=["txt"],key="Vlookup1")
 st.write("[Sample-Input_Excel](https://docs.google.com/spreadsheets/d/1Dzt9UX5NFOk0dhQOBe53qlVDaGz__SBs/edit?usp=drive_link&ouid=103232618408666892680&rtpof=true&sd=true)")
 st.write("[Sample-Input_Text](https://drive.google.com/file/d/1GOZRSLbKMj9JEFYxWC5FrvLgWmJyyUtQ/view?usp=sharing)")
 st.write("[Sample-Output](https://drive.google.com/file/d/1lfx8c0QWMR5XBVeHaKU2bvwzFPL2k8tb/view?usp=sharing)")
@@ -54,7 +49,3 @@ if file1 is not None:
         st.markdown(download_csv(data), unsafe_allow_html=True)
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
-
-# else:
-#     st.markdown("You need to log in to access this page.")
-#     # Display a message or redirect the user to the login page
