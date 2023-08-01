@@ -36,19 +36,7 @@ st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1pQP-InV1VBTYVvQ
 st.write("[Sample-Output](https://drive.google.com/file/d/1wiWWTo6OK2qy75tnD7WQb6GooGXKWVCq/view?usp=share_link)")
 if file is not None:
     df = pd.read_excel(file)
-    # Allow the user to select a column to sort by
-    sort_columns = st.multiselect("Select columns to sort by:", df.columns)
-
-    # Allow the user to choose the sorting order
-    sort_order = st.radio("Select sorting order:", ("Ascending", "Descending"))
-
-    # Sort the DataFrame based on the selected column and sorting order
-    if sort_order == "Ascending":
-        sorted_df = df.sort_values(by=sort_columns)
-    else:
-        sorted_df = df.sort_values(by=sort_columns, ascending=False)
-
-    gb = GridOptionsBuilder.from_dataframe(sorted_df)
+    gb = GridOptionsBuilder.from_dataframe(df)
     gridOptions = gb.build()
 
     return_mode_value = DataReturnMode.__members__['FILTERED_AND_SORTED']
@@ -58,7 +46,7 @@ if file is not None:
     st.header("Streamlit Ag-Grid")
 
     grid_response = AgGrid(
-        sorted_df, 
+        df, 
         gridOptions=gridOptions,
         height=400, 
         width='100%',
@@ -67,7 +55,7 @@ if file is not None:
         horizontal_scrollbar=True
         )
 
-    sorted_df = grid_response['data']
+    df = grid_response['data']
     selected = grid_response['selected_rows']
     selected_df = pd.DataFrame(selected).apply(pd.to_numeric, errors='coerce')
 
