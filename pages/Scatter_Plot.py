@@ -45,7 +45,11 @@ if file is not None:
         n = st.number_input("Enter a number of columns need to download (n)", min_value=1, max_value=len(df.columns)//2, step=1, value=3)
         selected_columns = list(range(2, (2*n)+2, 2))
         
-        data = df[[selected_column] + df.columns[selected_columns].tolist()]
+        d = df.iloc[:, selected_columns]
+
+        d = st.multiselect("Select columns to filter:", d.columns)
+        
+        data = df[[selected_column] + df[d].tolist()]
         st.write(data)
         # Create a download button
         st.markdown(download_excel(data), unsafe_allow_html=True)
