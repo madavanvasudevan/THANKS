@@ -89,7 +89,7 @@ if file is not None:
         result.dropna(subset=['GO_Pathway'], inplace=True)
         
         result['logFC'] = np.log2(result['up_count'] / result['down_count'])
-        
+        st.write(result)
         # Create a download link
         st.markdown(download_excel(result), unsafe_allow_html=True)
     except Exception as e:
