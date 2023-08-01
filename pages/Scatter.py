@@ -5,11 +5,6 @@ from io import BytesIO
 
 st.set_page_config(layout="wide")
 
-# Check if the user is logged in
-# if st.session_state.get('logged_in', False):
-#     # st.markdown("Welcome to the protected page!")
-#     # Display the contents of the protected page
-
 def get_img_as_base64(file):
     with open(file, "rb") as f:
         data = f.read()
@@ -36,7 +31,7 @@ def download_excel(data):
             href = f'<a href="data:application/octet-stream;base64,{b64}" download="output.xlsx">Download Excel file</a>'
             return href
 # Create a file uploader using Streamlit
-file = st.file_uploader(label="hello", type=["xlsx"], label_visibility="collapsed")
+file = st.file_uploader(label="hello", type=["xlsx"], label_visibility="collapsed",key="Scatter")
 st.write('Users can use this app to plot scatter, m6a scatter,quadrant scatter')
 st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1OcfdHNd2rQHpu93b0dkh21rEfcIqGoej/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1lj463Ev7cV0MQ9qC9-tla8y2xULSwj2k/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
@@ -60,6 +55,3 @@ if file is not None:
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
 
-# else:
-#     st.markdown("You need to log in to access this page.")
-#     # Display a message or redirect the user to the login page
