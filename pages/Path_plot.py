@@ -6,11 +6,6 @@ from io import BytesIO
 
 st.set_page_config(layout="wide")
 
-# Check if the user is logged in
-# if st.session_state.get('logged_in', False):
-#     # st.markdown("Welcome to the protected page!")
-#     # Display the contents of the protected page
-
 def get_img_as_base64(file):
     with open(file, "rb") as f:
         data = f.read()
@@ -37,7 +32,7 @@ def download_excel(result):
             return href
 
 # Create a file uploader using Streamlit
-file = st.file_uploader(label="hello", type=["xlsx"], label_visibility="collapsed")
+file = st.file_uploader(label="hello", type=["xlsx"], label_visibility="collapsed",key="Path")
 st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1zhFzNnTdWLSFsuK_Ya-2LCdJXPEa8nfK/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1R6L4yFUPpN9eEUGdiedMir90YSbVari0/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 
@@ -69,7 +64,3 @@ if file is not None:
         st.markdown(download_excel(data), unsafe_allow_html=True)
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
-
-# else:
-#     st.markdown("You need to log in to access this page.")
-#     # Display a message or redirect the user to the login page
