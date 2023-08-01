@@ -49,7 +49,7 @@ if file is not None:
 
         d = st.multiselect("Select columns to filter:", d.columns)
         
-        data = df[[selected_column] + df[d].tolist()]
+        data = df[[selected_column] + df[d]]
         st.write(data)
         # Create a download button
         st.markdown(download_excel(data), unsafe_allow_html=True)
