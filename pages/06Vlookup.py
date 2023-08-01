@@ -45,6 +45,7 @@ if file1 is not None:
 
         # Filter the DataFrame based on matching values in the specified column
         data = df_txt[df_txt['GeneSymbol'].isin(values_list)]
+        st.write(data)
         # Create a download button
         st.markdown(download_csv(data), unsafe_allow_html=True)
     except Exception as e:
