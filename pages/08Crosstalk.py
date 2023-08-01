@@ -50,7 +50,7 @@ if file is not None:
 
         # Filter the DataFrame to keep only redundant values in the 'node1' column
         redundant_df = new_df[new_df.duplicated(subset='node 1', keep=False)]
-
+        st.write(redundant_df)
         # Create a download link
         st.markdown(download(redundant_df), unsafe_allow_html=True)
     except Exception as e:
