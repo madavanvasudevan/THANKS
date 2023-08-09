@@ -29,7 +29,7 @@ def download_csv(data):
     return href
 # Create a file uploader using Streamlit
 file = st.file_uploader(label="Upload your excel file with gene names/values", type=["xlsx"],key="Vlookup0")
-file1 = st.file_uploader(label='Upload the main text file", type=["txt"],key="Vlookup1")
+file1 = st.file_uploader(label="Upload the main text file", type=["txt"],key="Vlookup1")
 st.write("[Sample-Input_Excel](https://docs.google.com/spreadsheets/d/1Dzt9UX5NFOk0dhQOBe53qlVDaGz__SBs/edit?usp=drive_link&ouid=103232618408666892680&rtpof=true&sd=true)")
 st.write("[Sample-Input_Text](https://drive.google.com/file/d/1GOZRSLbKMj9JEFYxWC5FrvLgWmJyyUtQ/view?usp=sharing)")
 st.write("[Sample-Output](https://drive.google.com/file/d/1lfx8c0QWMR5XBVeHaKU2bvwzFPL2k8tb/view?usp=sharing)")
