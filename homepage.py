@@ -33,7 +33,7 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 col1, col2 = st.columns(2)
 with col1:
   st.markdown(
-      "<span class='large-text'>**TH**</span><span class='medium-text'>eomics </span> <span class='large-text'>**AN**</span><span class='medium-text'>alytics</span> <span class='large-text'>**K**</span><span class='medium-text'>it</span> <span class='large-text'>**S**</span><span class='medium-text'>cience</span>",
+      "<span class='large-text'>**TH**</span><span class='medium-text'>eomics </span><span class='large-text'>**AN**</span><span class='medium-text'>alytics </span><span class='large-text'>**K**</span><span class='medium-text'>it </span><span class='large-text'>**S**</span><span class='medium-text'>cience</span>",
       unsafe_allow_html=True
   )
 with col2:
