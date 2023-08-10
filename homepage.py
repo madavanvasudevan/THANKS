@@ -22,7 +22,7 @@ image_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREh-y7VJtrA03
 # Display the image using Streamlit's image function
 st.write("<p style='text-align:right;'><img src='"+image_url+"' width=250 height=150></p>",unsafe_allow_html=True)
 
-st.title('THANKS-APP', anchor=None, *, help=None)
+st.title('THANKS-APP', anchor=None, help=None)
 
 
 st.subheader("TH-Theomics")
