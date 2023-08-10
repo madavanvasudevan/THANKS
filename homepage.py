@@ -1,5 +1,4 @@
 import streamlit as st
-from streamlit_login_auth_ui.widgets import __login__
 import base64
 
 @st.cache_data()
