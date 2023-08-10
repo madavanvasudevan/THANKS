@@ -17,6 +17,7 @@ background-color: rgba(0,0,0,0);
 st.markdown(page_bg_img, unsafe_allow_html=True)
 col1, col2 = st.columns(2)
 with col1:
+  st.markdown("<span style='font-size: 24px;'>This is a larger text size</span>", unsafe_allow_html=True)
   st.markdown('**TH**eomics **AN**alytics **K**it **S**cience')
 with col2:
   # URL of the image from the web
