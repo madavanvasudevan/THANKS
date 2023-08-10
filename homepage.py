@@ -5,7 +5,7 @@ st.set_page_config(layout="wide")
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-background-image: url("https://images.unsplash.com/photo-1501426026826-31c667bdf23d");
+background-image: url("https://img1.wsimg.com/isteam/stock/DjDe1rQ/:/rs=w:767,m");
 background-size: cover;
 }}
 [data-testid="stHeader"] {{
