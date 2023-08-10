@@ -15,17 +15,14 @@ background-color: rgba(0,0,0,0);
 """
 
 st.markdown(page_bg_img, unsafe_allow_html=True)
+col1, col2 = st.columns(2)
+with col1:
+  st.title('THeomincs ANalytics Kit Science', anchor=None)
+with col2:
+  # URL of the image from the web
+  image_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREh-y7VJtrA03RIlxLNVxt0DUOZyGBXELj1vqaAm_c1kWOW0RUqdP7QrysLqvZ2tSLUVj6acdWlUI&usqp=CAU&ec=48665698"
+  
+  # Display the image using Streamlit's image function
+  st.write("<p style='text-align:right;'><img src='"+image_url+"' width=250 height=150></p>",unsafe_allow_html=True)
 
-# URL of the image from the web
-image_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREh-y7VJtrA03RIlxLNVxt0DUOZyGBXELj1vqaAm_c1kWOW0RUqdP7QrysLqvZ2tSLUVj6acdWlUI&usqp=CAU&ec=48665698"
 
-# Display the image using Streamlit's image function
-st.write("<p style='text-align:right;'><img src='"+image_url+"' width=250 height=150></p>",unsafe_allow_html=True)
-
-st.title('THANKS-APP', anchor=None)
-
-
-st.subheader("TH-Theomics")
-st.subheader("AN-Analysis")
-st.subheader("K-Kit")
-st.subheader("S-For Science")
