@@ -6,7 +6,7 @@ page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
 background-image: url("https://img1.wsimg.com/isteam/stock/DjDe1rQ/:/rs=w:767,m");
-background-size: cover;
+background-size: 100%;
 }}
 [data-testid="stHeader"] {{
 background-color: rgba(0,0,0,0);
