@@ -1,4 +1,7 @@
 import streamlit as st
+
+st.set_page_config(layout="wide")
+
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
