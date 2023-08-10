@@ -1,12 +1,13 @@
-import base64
 import streamlit as st
+from streamlit_login_auth_ui.widgets import __login__
+import base64
 
 @st.cache_data()
 def get_img_as_base64(file):
     with open(file, "rb") as f:
         data = f.read()
     return base64.b64encode(data).decode()
-  
+
 img = get_img_as_base64("image.jpg")
 
 # URL of the image from the web
