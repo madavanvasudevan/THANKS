@@ -3,18 +3,8 @@ import streamlit as st
 from venn import venn
 import matplotlib.pyplot as plt
 import os
-import base64
-
 
 st.set_page_config(layout="wide")
-
-@st.cache_data()
-def get_img_as_base64(file):
-    with open(file, "rb") as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
-
-img = get_img_as_base64("image.jpg")
 
 # URL of the image from the web
 image_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREh-y7VJtrA03RIlxLNVxt0DUOZyGBXELj1vqaAm_c1kWOW0RUqdP7QrysLqvZ2tSLUVj6acdWlUI&usqp=CAU&ec=48665698"
