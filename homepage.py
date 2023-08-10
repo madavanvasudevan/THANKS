@@ -17,6 +17,7 @@ background-color: rgba(0,0,0,0);
 st.markdown(page_bg_img, unsafe_allow_html=True)
 col1, col2 = st.columns(2)
 with col1:
+  st.subheader("**TH**eomics **AN**alytics **K**it **S**cience")
   st.subheader("<span style='font-size: 42px;'>**TH**</span>eomics <span style='font-size: 42px;'>**AN**</span>alytics <span style='font-size: 42px;'>**K**</span>it <span style='font-size: 42px;'>**S**</span>cience", unsafe_allow_html=True)
 with col2:
   # URL of the image from the web
