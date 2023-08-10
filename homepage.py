@@ -5,7 +5,7 @@ page_bg_img = f"""
 background-image: url("https://images.unsplash.com/photo-1501426026826-31c667bdf23d");
 background-size: cover;
 }}
-[data-testid="stSidebar"] > div:first-child {{
+[data-testid="stHeader"] {{
 background-color: rgba(0,0,0,0);
 }}
 </style>
