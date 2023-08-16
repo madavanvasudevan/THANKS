@@ -11,7 +11,6 @@ background-size: cover;
 [data-testid="stHeader"] {{
 background-color: rgba(0,0,0,0);
 }}
-
 </style>
 """
 
