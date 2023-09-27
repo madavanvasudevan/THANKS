@@ -4,6 +4,8 @@ import io
 import seaborn as sn
 import matplotlib.pyplot as plt
 
+st.set_page_config(layout="wide")
+
 class Gene:
     def __init__(self, name=""):
         self.gene_name = name
@@ -16,6 +18,7 @@ class DataProcessor:
 
     def read_data(self, file):
         try:
+            
             df = pd.read_csv(file, delimiter='\t', header=None, names=['gene_name', 'condition_name'])
             for _, row in df.iterrows():
                 gene_name = row['gene_name']
@@ -102,7 +105,8 @@ def main():
     st.title("Gene Data Processor")
 
     # File upload widget
-    uploaded_file = st.file_uploader("Upload a CSV file", type=["txt"])
+    st.subheader("Upload your files")
+    uploaded_file = st.file_uploader("Upload a CSV file", type=["txt"], label_visibility="collapsed")
     
     if uploaded_file is not None:
         dp = DataProcessor()
