@@ -102,12 +102,14 @@ class DataProcessor:
             st.pyplot()  # Display the plot using Streamlit
 
 def main():
-    st.title("Gene Data Processor")
+    st.title("Correlation Matrix")
 
     # File upload widget
     st.subheader("Upload a file")
     uploaded_file = st.file_uploader("Upload a CSV file", type=["txt"], label_visibility="collapsed")
-    
+    st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1vGKInt4xUTVAx3ioc2HnbtyqSwZYUmT4/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
+    st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1rvCMP9VUZoCI3b1fVXxQaFqJkpZ_XXU1/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
+
     if uploaded_file is not None:
         dp = DataProcessor()
         dp.read_data(uploaded_file)
