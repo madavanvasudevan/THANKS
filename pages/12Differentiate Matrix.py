@@ -107,8 +107,8 @@ def main():
     # File upload widget
     st.subheader("Upload a file")
     uploaded_file = st.file_uploader("Upload a CSV file", type=["txt"], label_visibility="collapsed",key='Differentiate_Matrix')
-    st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1vGKInt4xUTVAx3ioc2HnbtyqSwZYUmT4/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
-    st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1rvCMP9VUZoCI3b1fVXxQaFqJkpZ_XXU1/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
+    st.write("[Sample-Input](https://drive.google.com/file/d/1n2V7E-6quDcVO23Qv6PLC_E7enwtxGZ2/view?usp=sharing)")
+    st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1r-_UX5ybnHA1ec_cJtbYtBe9ZmZAYLNo/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 
     if uploaded_file is not None:
         dp = DataProcessor()
