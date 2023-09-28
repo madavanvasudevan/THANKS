@@ -115,6 +115,7 @@ def main():
         dp.read_data(uploaded_file)
         dp.do_process()
         dp.create_corr_matrix_and_plot()  # Call the new function to create and display the correlation matrix
-
+        # Add the Excel download button after processing and displaying the data
+        dp.download_excel()
 if __name__ == "__main__":
     main()
