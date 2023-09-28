@@ -12,7 +12,7 @@ st.write("<p style='text-align:right;'><img src='"+image_url+"' width=250 height
 
 st.title("SNP_Heatmap")
         
-st.subheader("Upload your files")
+st.subheader("Upload a file")
 
 # Define a function that creates a download link for a DataFrame
 def download_csv(df):
