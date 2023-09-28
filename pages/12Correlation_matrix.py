@@ -105,7 +105,7 @@ def main():
     st.title("Gene Data Processor")
 
     # File upload widget
-    st.subheader("Upload a files")
+    st.subheader("Upload a file")
     uploaded_file = st.file_uploader("Upload a CSV file", type=["txt"], label_visibility="collapsed")
     
     if uploaded_file is not None:
