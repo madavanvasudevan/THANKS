@@ -86,7 +86,7 @@ class DataProcessor:
             st.download_button(
                 label="Download Excel",
                 data=output,
-                file_name="gene_data.xlsx",
+                file_name="Differentiate_Matrix.xlsx",
                 key="excel_button",
             )
     def create_corr_matrix_and_plot(self):
@@ -102,7 +102,7 @@ class DataProcessor:
             st.pyplot()  # Display the plot using Streamlit
 
 def main():
-    st.title("Correlation Matrix")
+    st.title("Differentiate Matrix")
 
     # File upload widget
     st.subheader("Upload a file")
