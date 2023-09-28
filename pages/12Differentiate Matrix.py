@@ -106,7 +106,7 @@ def main():
 
     # File upload widget
     st.subheader("Upload a file")
-    uploaded_file = st.file_uploader("Upload a CSV file", type=["txt"], label_visibility="collapsed")
+    uploaded_file = st.file_uploader("Upload a CSV file", type=["txt"], label_visibility="collapsed",key='Differentiate_Matrix')
     st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1vGKInt4xUTVAx3ioc2HnbtyqSwZYUmT4/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
     st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1rvCMP9VUZoCI3b1fVXxQaFqJkpZ_XXU1/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 
