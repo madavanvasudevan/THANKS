@@ -17,7 +17,7 @@ st.markdown('''
 # **Venn_Plot**
 ''')
 
-st.subheader("Upload your files")
+st.subheader("Upload a files")
 
 
 # Function to create dataframes for all uploaded files
