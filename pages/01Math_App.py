@@ -13,7 +13,7 @@ st.write("<p style='text-align:right;'><img src='"+image_url+"' width=250 height
 
 # Web App Title
 st.markdown('''
-# **The Math App**
+# **Math App**
 ''')
 
 st.subheader("Upload a file")
