@@ -29,11 +29,6 @@ st.write("[Sample-Output](https://drive.google.com/file/d/1wiWWTo6OK2qy75tnD7WQb
 if file is not None:
     df = pd.read_excel(file)
     gb = GridOptionsBuilder.from_dataframe(df)
-
-    # Customize GridOptions for column selection
-    gb.configure_selection(selection_mode="multiple")
-    gb.configure_grid_options(domLayout='normal')
-    
     gridOptions = gb.build()
 
     return_mode_value = DataReturnMode.__members__['FILTERED_AND_SORTED']
