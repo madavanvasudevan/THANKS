@@ -9,7 +9,7 @@ st.set_page_config(layout="wide")
 image_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREh-y7VJtrA03RIlxLNVxt0DUOZyGBXELj1vqaAm_c1kWOW0RUqdP7QrysLqvZ2tSLUVj6acdWlUI&usqp=CAU&ec=48665698"
 
 # Display the image using Streamlit's image function
-st.write("<p style='text-align:right;'><img src='"+image_url+"' width=250 height=150></p>",unsafe_allow_html=True)
+st.write("<p style='text-align:right;'><img src='"+image_url+"' width=250 height=150></p>", unsafe_allow_html=True)
 
 st.title("Filter")
 
@@ -23,18 +23,23 @@ def create_download_link(df, filename):
     return href
 
 # Create a file uploader using Streamlit
-file = st.file_uploader(label="hello", type=["xlsx"], label_visibility="collapsed",key="Filter")
+file = st.file_uploader(label="hello", type=["xlsx"], label_visibility="collapsed", key="Filter")
 st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1pQP-InV1VBTYVvQaYxak26_5Tm15bKI4/edit?usp=share_link&ouid=103232618408666892680&rtpof=true&sd=true)")
 st.write("[Sample-Output](https://drive.google.com/file/d/1wiWWTo6OK2qy75tnD7WQb6GooGXKWVCq/view?usp=share_link)")
 if file is not None:
     df = pd.read_excel(file)
     gb = GridOptionsBuilder.from_dataframe(df)
+
+    # Customize GridOptions for column selection
+    gb.configure_selection(selection_mode="multiple", use_checkbox=True)
+    gb.configure_column(column_def=[{"headerCheckboxSelection": True, "checkboxSelection": True}], editable=True)
+
     gridOptions = gb.build()
 
     return_mode_value = DataReturnMode.__members__['FILTERED_AND_SORTED']
     update_mode_value = GridUpdateMode.__members__['GRID_CHANGED']
 
-    #Display the grid
+    # Display the grid
     st.header("Streamlit Ag-Grid")
 
     grid_response = AgGrid(
@@ -45,7 +50,7 @@ if file is not None:
         data_return_mode=return_mode_value, 
         update_mode=update_mode_value,
         horizontal_scrollbar=True
-        )
+    )
 
     df = grid_response['data']
     selected = grid_response['selected_rows']
@@ -57,4 +62,4 @@ if file is not None:
         csv = grid_response['data'].to_csv(index=False)
         b64 = base64.b64encode(csv.encode()).decode()
         href = f'<a href="data:file/csv;base64,{b64}" download="{filename}.csv">Download {filename} CSV file</a>'
-        st.markdown(href, unsafe_allow_html=True) 
+        st.markdown(href, unsafe_allow_html=True)
