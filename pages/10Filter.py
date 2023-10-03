@@ -29,10 +29,12 @@ st.write("[Sample-Output](https://drive.google.com/file/d/1wiWWTo6OK2qy75tnD7WQb
 if file is not None:
     df = pd.read_excel(file)
     gb = GridOptionsBuilder.from_dataframe(df)
-    gridOptions = gb.build()
+
     # Customize GridOptions for column selection
-    gb.configure_selection(selection_mode="multiple", use_checkbox=True)
-    gb.configure_column(column_def=[{"headerCheckboxSelection": True, "checkboxSelection": True}], editable=True)
+    gb.configure_selection(selection_mode="multiple")
+    gb.configure_grid_options(domLayout='normal')
+    
+    gridOptions = gb.build()
 
     return_mode_value = DataReturnMode.__members__['FILTERED_AND_SORTED']
     update_mode_value = GridUpdateMode.__members__['GRID_CHANGED']
