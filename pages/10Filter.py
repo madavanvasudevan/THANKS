@@ -30,7 +30,8 @@ if file is not None:
     df = pd.read_excel(file)
     gb = GridOptionsBuilder.from_dataframe(df)
     gridOptions = gb.build()
-
+    GridOptions[“columnDefs”][0][“checkboxSelection”]=True
+    GridOptions[“columnDefs”][0][“headerCheckboxSelection”]=True
     return_mode_value = DataReturnMode.__members__['FILTERED_AND_SORTED']
     update_mode_value = GridUpdateMode.__members__['GRID_CHANGED']
 
