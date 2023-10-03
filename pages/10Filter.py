@@ -29,7 +29,7 @@ st.write("[Sample-Output](https://drive.google.com/file/d/1wiWWTo6OK2qy75tnD7WQb
 if file is not None:
     df = pd.read_excel(file)
     gb = GridOptionsBuilder.from_dataframe(df)
-    gridOptions = gb.build()
+    GridOptions = gb.build()
     GridOptions[“columnDefs”][0][“checkboxSelection”]=True
     GridOptions[“columnDefs”][0][“headerCheckboxSelection”]=True
     return_mode_value = DataReturnMode.__members__['FILTERED_AND_SORTED']
@@ -40,7 +40,7 @@ if file is not None:
 
     grid_response = AgGrid(
         df, 
-        gridOptions=gridOptions,
+        GridOptions=GridOptions,
         height=400, 
         width='100%',
         data_return_mode=return_mode_value, 
