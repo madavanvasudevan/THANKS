@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import base64
-from  import BytesIO
+from io import BytesIO
 
 
 st.set_page_config(layout="wide")
@@ -52,4 +52,4 @@ if uploaded_file is not None:
     # Display the processed DataFrame
     st.write(data1)
     # Create a download link
-    st.markdown(download_excel(data1), unsafe_allow_html=True)
+    st.markdown(download_excel(data), unsafe_allow_html=True)
