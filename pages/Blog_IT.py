@@ -14,7 +14,7 @@ st.write("<p style='text-align:right;'><img src='"+image_url+"' width=250 height
 st.title("Blog IT")
 st.header("Upload a file")
 # Upload Excel file
-uploaded_file = st.file_uploader(type=["xlsx"],label_visibility="collapsed",key="blog_it")
+uploaded_file = st.file_uploader(label="hello",type=["xlsx"],label_visibility="collapsed",key="blog_it")
 
 if uploaded_file is not None:
     # Read the Excel file into a DataFrame
