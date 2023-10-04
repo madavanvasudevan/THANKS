@@ -11,10 +11,10 @@ image_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREh-y7VJtrA03
 st.write("<p style='text-align:right;'><img src='"+image_url+"' width=250 height=150></p>",unsafe_allow_html=True)
 
 # Define a Streamlit app
-st.title("Blog_IT")
-
+st.title("Blog IT")
+st.header("Upload a file")
 # Upload Excel file
-uploaded_file = st.file_uploader("Upload an Excel file", type=["xlsx"])
+uploaded_file = st.file_uploader(type=["xlsx"],label_visibility="collapsed",key="blog_it")
 
 if uploaded_file is not None:
     # Read the Excel file into a DataFrame
