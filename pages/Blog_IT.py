@@ -19,7 +19,7 @@ def download_excel(result):
             result.to_excel(excel_file, index=False)
             excel_file.seek(0)
             b64 = base64.b64encode(excel_file.read()).decode()
-            href = f'<a href="data:application/octet-stream;base64,{b64}" download="Gopath_out.xlsx">Download Excel file</a>'
+            href = f'<a href="data:application/octet-stream;base64,{b64}" download="Blog_out.xlsx">Download Excel file</a>'
             return href
     
 # Define a Streamlit app
