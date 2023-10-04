@@ -52,4 +52,4 @@ if uploaded_file is not None:
     # Display the processed DataFrame
     st.write(data1)
     # Create a download link
-    st.markdown(download_excel(data), unsafe_allow_html=True)
+    st.markdown(download_exce(data1), unsafe_allow_html=True)
