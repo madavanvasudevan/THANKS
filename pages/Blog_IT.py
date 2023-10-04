@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import io  # Import io module for working with binary data
 
 st.set_page_config(layout="wide")
 
@@ -40,10 +41,10 @@ if uploaded_file is not None:
     # Display the processed DataFrame
     st.write(data1)
 
-    # Save the processed data to an Excel file
+# Provide a download button for the Excel file
     st.download_button(
         label="Download Processed Data",
-        data=data1.to_excel(index=False, header=True),
+        data=excel_buffer,
         file_name="out.xlsx",
         key="processed-data",
     )
