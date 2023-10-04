@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import io  # Import io module for working with binary data
+import base64
 
 st.set_page_config(layout="wide")
 
@@ -11,6 +11,15 @@ image_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREh-y7VJtrA03
 # Display the image using Streamlit's image function
 st.write("<p style='text-align:right;'><img src='"+image_url+"' width=250 height=150></p>",unsafe_allow_html=True)
 
+# Define a function that creates a download link for a DataFrame
+def download_excel(result):
+            excel_file = BytesIO()
+            result.to_excel(excel_file, index=False)
+            excel_file.seek(0)
+            b64 = base64.b64encode(excel_file.read()).decode()
+            href = f'<a href="data:application/octet-stream;base64,{b64}" download="Gopath_out.xlsx">Download Excel file</a>'
+            return href
+    
 # Define a Streamlit app
 st.title("Blog IT")
 st.header("Upload a file")
@@ -40,11 +49,5 @@ if uploaded_file is not None:
 
     # Display the processed DataFrame
     st.write(data1)
-
-# Provide a download button for the Excel file
-    st.download_button(
-        label="Download Processed Data",
-        data=excel_buffer,
-        file_name="out.xlsx",
-        key="processed-data",
-    )
+    # Create a download link
+    st.markdown(download_excel(data1), unsafe_allow_html=True)
