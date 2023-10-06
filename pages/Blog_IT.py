@@ -28,7 +28,7 @@ st.header("Upload a file")
 # Upload Excel file
 uploaded_file = st.file_uploader(label="hello",type=["xlsx"],label_visibility="collapsed",key="blog_it")
 st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1Oxj9GT3rNhbNm6ZH-Gl-EiYtMfXvbfHn/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
-st.write("[Sample-Output]()")
+st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/18P2y2jiKqrBaRCZhMyu-uPhkC80USjwk/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 if uploaded_file is not None:
     # Read the Excel file into a DataFrame
     data = pd.read_excel(uploaded_file)
