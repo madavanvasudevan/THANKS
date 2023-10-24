@@ -26,7 +26,7 @@ def download_excel(result):
 st.title("Blog IT")
 st.subheader("Upload a file")
 # Upload Excel file
-uploaded_file = st.file_uploader(label="hello",type=["xlsx"],label_visibility="collapsed",key="blog_it")
+uploaded_file = st.file_uploader(label="Upload a file", type=["xlsx", "txt"], label_visibility="collapsed", key="Math",delimiter = '\t')
 st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1Oxj9GT3rNhbNm6ZH-Gl-EiYtMfXvbfHn/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/18P2y2jiKqrBaRCZhMyu-uPhkC80USjwk/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 if uploaded_file is not None:
