@@ -26,7 +26,7 @@ st.write("[Sample-Output](https://drive.google.com/file/d/1fmmqgGaZQ-J8OwGyOI3fL
 
 # Show the DataFrame if all columns except the first column are numeric
 if uploaded_file is not None:
-        df = pd.read_excel(uploaded_file,delimiter='\t')
+        df = pd.read_csv(uploaded_file,delimiter='\t')
         
         # Drop columns that are not numeric or have all NaN values
         df_numeric = df.dropna(axis=1, how='all').apply(pd.to_numeric, errors='coerce')
