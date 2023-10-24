@@ -28,7 +28,7 @@ st.write("[Sample-Output](https://drive.google.com/file/d/1fmmqgGaZQ-J8OwGyOI3fL
 if uploaded_file is not None:
         file_format = uploaded_file.name.split('.')[-1]  # Get the file format
         
-        if file_format == "csv":
+        if file_format == "txt":
          df = pd.read_csv(uploaded_file, delimiter='\t')
         elif file_format == "xlsx":
          df = pd.read_excel(uploaded_file)
