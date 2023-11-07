@@ -31,9 +31,13 @@ if file is not None:
     try:
         df = pd.read_excel(file)
 
-        data = df.iloc[:,[1,2]].T
-        st.write(data)
-        
+        # Check if the columns exist in the DataFrame
+        if 'gene' in df.columns and 'logfc' in df.columns:
+            # Select columns by name "gene" and "logfc"
+            data = df[['GENE_NAME', 'logFC']].T
+            st.write(data)
+        else:
+            st.write("The 'GENE_NAME' and 'logFC' columns are not present in the DataFrame.")
         # Create a download button
         st.markdown(download_excel(data), unsafe_allow_html=True)
     except Exception as e:
