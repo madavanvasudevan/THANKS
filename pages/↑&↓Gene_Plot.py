@@ -32,7 +32,7 @@ if file is not None:
         df = pd.read_excel(file)
 
         # Check if the columns exist in the DataFrame
-        if 'gene' in df.columns and 'logfc' in df.columns:
+        if 'GENE_NAME' in df.columns and 'logFC' in df.columns:
             # Select columns by name "gene" and "logfc"
             data = df[['GENE_NAME', 'logFC']].T
             st.write(data)
