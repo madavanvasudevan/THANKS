@@ -23,6 +23,7 @@ def download_file(file_path, file_name):
 
 # Create a file uploader
 input_path = st.file_uploader(label="hello",type="txt", label_visibility="collapsed")
+st.write("[Sample-Input](https://drive.google.com/file/d/1fYRDgis8A-Y9GPJERycX_pYTwmsxgmqX/view?usp=sharing)")
 
 if input_path:
     # Define output file paths with ".txt" extension
