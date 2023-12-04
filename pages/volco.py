@@ -212,7 +212,7 @@ if __name__ == '__main__':
 
             st.subheader('Selected Yaxis customize Option')
             # User input for y_axis_fixed_value
-            y_axis_fixed_value = st.number_input('Enter the fixed y-axis value:', step=1,placeholder='',key='y_axis_C')
+            y_axis_fixed_value = st.number_input('Enter the fixed y-axis value:', step=1,key='y_axis_C')
 
             # User input for y_axis_fixed_value_size
             y_axis_fixed_value_size = st.number_input('Enter the marker size for values crossing the fixed y-axis:', value=15, step=1,key='y_axis_S')    
