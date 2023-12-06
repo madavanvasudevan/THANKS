@@ -195,7 +195,16 @@ if __name__ == '__main__':
 
             #Option list
             options_list = [
-                'circle', 'square', 'diamond', 'cross', 'x', 'triangle-up', 'triangle-down',None,
+                'circle', 'square', 'diamond', 'cross', 'x', 'triangle-up', 'triangle-down',
+                'triangle-left', 'triangle-right', 'pentagon', 'hexagram', 'star', 'hourglass',
+                'bowtie', 'circle-open', 'square-open','diamond-open', 'cross-open', 'x-open', 
+                'triangle-up-open', 'triangle-down-open','triangle-left-open', 'triangle-right-open',
+                'pentagon-open', 'hexagram-open','star-open', 'hourglass-open', 'bowtie-open', 'asterisk-open',
+                'hash-open', 'circle-dot', 'square-dot', 'diamond-dot', 'cross-dot', 'x-dot', 'triangle-up-dot',
+                'triangle-down-dot','triangle-left-dot', 'triangle-right-dot', 'pentagon-dot','hexagram-dot', 'star-dot'
+            ]
+            options_list1 = [None,
+                'circle', 'square', 'diamond', 'cross', 'x', 'triangle-up', 'triangle-down',
                 'triangle-left', 'triangle-right', 'pentagon', 'hexagram', 'star', 'hourglass',
                 'bowtie', 'circle-open', 'square-open','diamond-open', 'cross-open', 'x-open', 
                 'triangle-up-open', 'triangle-down-open','triangle-left-open', 'triangle-right-open',
@@ -221,7 +230,7 @@ if __name__ == '__main__':
             None_marker_size = st.slider('Select Marker Size', min_value=1, max_value=20, value=12,key='None_S')
             
             st.subheader('Selected Gene Customize Option')
-            Selected_marker_symbol = st.selectbox('Selected Gene Shape',options_list, key='Selected')
+            Selected_marker_symbol = st.selectbox('Selected Gene Shape',options_list1, key='Selected')
             Selected_marker_size = st.slider('Selected Gene Marker Size', min_value=1, max_value=20, value=12,key='Selected_S')
             Selected_text_size = st.number_input('Selected Gene Text Size', value=15, step=1,key='Selected_T')
 
