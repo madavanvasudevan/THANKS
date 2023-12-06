@@ -195,7 +195,7 @@ if __name__ == '__main__':
 
             #Option list
             options_list = [
-                'circle', 'square', 'diamond', 'cross', 'x', 'triangle-up', 'triangle-down',
+                'circle', 'square', 'diamond', 'cross', 'x', 'triangle-up', 'triangle-down',None,
                 'triangle-left', 'triangle-right', 'pentagon', 'hexagram', 'star', 'hourglass',
                 'bowtie', 'circle-open', 'square-open','diamond-open', 'cross-open', 'x-open', 
                 'triangle-up-open', 'triangle-down-open','triangle-left-open', 'triangle-right-open',
