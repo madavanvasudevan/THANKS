@@ -74,7 +74,22 @@ def generate_volcano_plot(data, gene_column, fold_change_column, p_value_column,
         'None': dict(symbol=None_marker_symbol, size=None_marker_size, color=none_color),
         'Selected': dict(symbol=Selected_marker_symbol, size=Selected_marker_size)
     }
-
+    # Update marker properties for 'Selected' segment based on conditions
+    selected_data = data[data['Segment'] == 'Selected']
+    selected_marker_symbols = np.select(
+        [
+            (selected_data[fold_change_column] > up_threshold) & (selected_data[p_value_column] < p_value_threshold),
+            (selected_data[fold_change_column] < down_threshold) & (selected_data[p_value_column] < p_value_threshold),
+        ],
+        [Up_marker_symbol, Down_marker_symbol],
+        default=None_marker_symbol
+    )
+    # Check if the selected marker symbol is not 'None' and execute something
+    if Selected_marker_symbol is None:
+        # Update 'Selected' segment properties in the dictionary
+        marker_properties['Selected']['symbol'] = selected_marker_symbols
+    else:
+        pass
 # Loop through each trace type and add the corresponding trace to the figure
     for trace_type, properties in marker_properties.items():
         trace_data = data[data['Segment'] == trace_type]
