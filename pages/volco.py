@@ -214,27 +214,27 @@ if __name__ == '__main__':
             ]
     
             # Color selection options
-            st.subheader('UP Customize Option')
+            st.subheader('UP Customization Option')
             up_color = st.color_picker('Select Color', value='#FF0000',key='Up_C')     
             Up_marker_symbol = st.selectbox('Select Shape',options_list, key='Up')
             Up_marker_size = st.slider('Select Marker Size', min_value=1, max_value=20, value=12,key='Up_S')
             
-            st.subheader('Down Customize Option')
+            st.subheader('Down Customization Option')
             down_color = st.color_picker('Select Color', value='#0000FF',key='Down_C')
             Down_marker_symbol = st.selectbox('Select Shape',options_list, key='Down')
             Down_marker_size = st.slider('Select Marker Size', min_value=1, max_value=20, value=12,key='Down_S')
 
-            st.subheader('None Customize Option')
+            st.subheader('Insignificant Customization Option')
             none_color = st.color_picker('Select Color', value='#808080',key='None_C')
             None_marker_symbol = st.selectbox('Select Shape',options_list, key='None')
             None_marker_size = st.slider('Select Marker Size', min_value=1, max_value=20, value=12,key='None_S')
             
-            st.subheader('Selected Gene Customize Option')
+            st.subheader('Selected Gene Customization Option')
             Selected_marker_symbol = st.selectbox('Selected Shape',options_list1, key='Selected')
             Selected_marker_size = st.slider('Selected Marker Size', min_value=1, max_value=20, value=12,key='Selected_S')
             Selected_text_size = st.number_input('Selected Text Size', value=15, step=1,key='Selected_T')
 
-            st.subheader('Selected Yaxis customize Option')
+            st.subheader('Selected Yaxis Customization Option')
             # User input for y_axis_fixed_value
             y_axis_fixed_value = st.number_input('Enter the fixed y-axis value:', step=1,key='y_axis_C')
 
