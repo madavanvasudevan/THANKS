@@ -9,14 +9,6 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(layout="wide")
 
-@st.cache_data()
-def get_img_as_base64(file):
-    with open(file, "rb") as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
-
-img = get_img_as_base64("image.jpg")
-
 # URL of the image from the web
 image_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREh-y7VJtrA03RIlxLNVxt0DUOZyGBXELj1vqaAm_c1kWOW0RUqdP7QrysLqvZ2tSLUVj6acdWlUI&usqp=CAU&ec=48665698"
 
@@ -78,9 +70,9 @@ uploaded_files = st.file_uploader(
     label_visibility="collapsed",
     accept_multiple_files=True
 )
-st.write("User Can input up-to 6 files but the file should be in the format of sample input")
-st.write("[Sample-Input]()")
-st.write("[Sample-Output]()")
+st.write("User can input multiple files but the file should have same column name in all the file")
+st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1dVtTVpuDgVLeVv4lgvoYH8zMc5Y5AfaQ/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
+st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1K0HRInvjFL2_aiK9jRoKTa8Dq43kfFtx/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 
 if uploaded_files is not None:
     # Call the create_dataframes function to create dataframes for all uploaded files
