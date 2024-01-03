@@ -32,7 +32,7 @@ st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1hguFNoZO5CX2Eu
 if file is not None:
     try:
         df = pd.read_excel(file)
-
+        st.write(df)
         # Separate values in the "Genes" column and create a new DataFrame with redundant values
         genes_split = df['Genes'].str.split(', ')
         new_df = pd.DataFrame({
