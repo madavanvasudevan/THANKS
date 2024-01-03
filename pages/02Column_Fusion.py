@@ -22,7 +22,7 @@ st.write("[Sample-Input](https://drive.google.com/file/d/16MiqpKw0Fm9j38fWf3TIH2
 st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1i473hOKzOAW6XICDAImjEIGN8XZ8b8u3/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
    
 if file is not None:
-    df = pd.read_csv(file, delimiter='\t')
+    df = pd.read_csv(file, delimiter='\t', header=0)
 
     # Validate number of columns
     if df.shape[1] != 2:
