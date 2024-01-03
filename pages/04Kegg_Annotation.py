@@ -16,13 +16,24 @@ st.write("<p style='text-align:right;'><img src='"+image_url+"' width=250 height
 # Title and file uploader
 st.title("KEGG Annotation")
 st.subheader("Upload a file")
-file3 = st.file_uploader(label="Select a file", type=["txt"], label_visibility="collapsed",key="Kegg")
+file3 = st.file_uploader(label="Select a file", type=["txt","xlsx"], label_visibility="collapsed",key="Kegg")
 st.write("[Sample-Input](https://drive.google.com/file/d/14jzsr3Xl6Ekfim1EtWGW5fTDDStSoAvv/view?usp=share_link)")
 st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1cUAqGNQXzRswIsrQ5EeyRc68mVQrWJUb/edit?usp=share_link&ouid=103232618408666892680&rtpof=true&sd=true)")
 
 if file3 is not None:
     # Read the uploaded file into a DataFrame
     df = pd.read_csv(file3, header=None,delimiter='None')
+    if file3 is not None:
+    file_format = file3.name.split('.')[-1]  # Get the file format
+    
+    if file_format == "txt":
+     df = pd.read_csv(file3,header=None,delimiter='None')
+    elif file_format == "xlsx":
+     df = pd.read_excel(file3,header=None,delimiter='None')
+    else:
+      st.error("Unsupported file format. Please upload a CSV or Excel file.")
+      st.stop()
+
     st.subheader('**Input DataFrame**')
     st.write(df)
      
