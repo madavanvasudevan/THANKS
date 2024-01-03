@@ -34,11 +34,9 @@ if file is not None:
         df = pd.read_excel(file)
         st.write(df)
         option=df.columns
-        Gene = st.selectbox('Select Gene',option,key='gene')
-        Term = st.selectbox('Select Term',option, key='term')
-        
+        Gene = st.selectbox('Select Gene', [None] + list(option), key='gene')
+        Term = st.selectbox('Select Term', [None] + list(option), key='term')        
         if Gene is not None and Term is not None:
-        
                 # Separate values in the "Genes" column and create a new DataFrame with redundant values
                 genes_split = df[Gene].str.split(', ')
                 new_df = pd.DataFrame({
