@@ -23,7 +23,9 @@ st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1cUAqGNQXzRswIs
 if file3 is not None:
     # Read the uploaded file into a DataFrame
     df = pd.read_csv(file3, header=None,delimiter='None')
-    
+    st.subheader('**Input DataFrame**')
+    st.write(df)
+     
     # Create an input field for the "map" data
     map_data = st.text_input("Enter map data (e.g., map123): ")
     if map_data:
