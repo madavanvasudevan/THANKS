@@ -22,7 +22,15 @@ st.write("[Sample-Input](https://drive.google.com/file/d/16MiqpKw0Fm9j38fWf3TIH2
 st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1i473hOKzOAW6XICDAImjEIGN8XZ8b8u3/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
    
 if file is not None:
-    df = pd.read_csv(file, delimiter='\t', header=0)
+    file_format = file.name.split('.')[-1]  # Get the file format
+    
+    if file_format == "txt":
+     df = pd.read_csv(file, delimiter='\t',header=0)
+    elif file_format == "xlsx":
+     df = pd.read_excel(file,header=0)
+    else:
+      st.error("Unsupported file format. Please upload a CSV or Excel file.")
+      st.stop()
 
     # Validate number of columns
     if df.shape[1] != 2:
