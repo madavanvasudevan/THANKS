@@ -21,9 +21,6 @@ st.write("[Sample-Input](https://drive.google.com/file/d/14jzsr3Xl6Ekfim1EtWGW5f
 st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1cUAqGNQXzRswIsrQ5EeyRc68mVQrWJUb/edit?usp=share_link&ouid=103232618408666892680&rtpof=true&sd=true)")
 
 if file3 is not None:
-    # Read the uploaded file into a DataFrame
-    df = pd.read_csv(file3, header=None,delimiter='None')
-    if file3 is not None:
     file_format = file3.name.split('.')[-1]  # Get the file format
     
     if file_format == "txt":
