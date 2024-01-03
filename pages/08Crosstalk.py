@@ -33,18 +33,24 @@ if file is not None:
     try:
         df = pd.read_excel(file)
         st.write(df)
-        # Separate values in the "Genes" column and create a new DataFrame with redundant values
-        genes_split = df['Genes'].str.split(', ')
-        new_df = pd.DataFrame({
-            'node 1': genes_split.explode().reset_index(drop=True),
-            'interaction': 'regulate',
-            'node 2': df['Term'].repeat(genes_split.str.len()).reset_index(drop=True)
-        })
-
-        # Filter the DataFrame to keep only redundant values in the 'node1' column
-        redundant_df = new_df[new_df.duplicated(subset='node 1', keep=False)]
-        st.write(redundant_df)
-        # Create a download link
-        st.markdown(download(redundant_df), unsafe_allow_html=True)
+        columns=df.column
+        Gene = st.selectbox('Select Gene',columns,key='gene')
+        Term = st.selectbox('Select Term',columns, key='term')
+        
+        if Gene is not None and Term is not None:
+        
+                # Separate values in the "Genes" column and create a new DataFrame with redundant values
+                genes_split = df[Gene].str.split(', ')
+                new_df = pd.DataFrame({
+                    'node 1': genes_split.explode().reset_index(drop=True),
+                    'interaction': 'regulate',
+                    'node 2': df[Term].repeat(genes_split.str.len()).reset_index(drop=True)
+                })
+        
+                # Filter the DataFrame to keep only redundant values in the 'node1' column
+                redundant_df = new_df[new_df.duplicated(subset='node 1', keep=False)]
+                st.write(redundant_df)
+                # Create a download link
+                st.markdown(download(redundant_df), unsafe_allow_html=True)
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
