@@ -33,9 +33,9 @@ if file is not None:
     try:
         df = pd.read_excel(file)
         st.write(df)
-        columns=df.column
-        Gene = st.selectbox('Select Gene',columns,key='gene')
-        Term = st.selectbox('Select Term',columns, key='term')
+        option=df.columns
+        Gene = st.selectbox('Select Gene',option,key='gene')
+        Term = st.selectbox('Select Term',option, key='term')
         
         if Gene is not None and Term is not None:
         
