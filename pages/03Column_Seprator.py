@@ -24,9 +24,9 @@ if file is not None:
     file_format = file.name.split('.')[-1]  # Get the file format
     
     if file_format == "txt":
-     df = pd.read_csv(file, delimiter='\t',header=None)
+     data = pd.read_csv(file, delimiter='\t',header=None)
     elif file_format == "xlsx":
-     df = pd.read_excel(file,header=None)
+     data = pd.read_excel(file,header=None)
     else:
       st.error("Unsupported file format. Please upload a CSV or Excel file.")
       st.stop()
