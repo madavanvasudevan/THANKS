@@ -16,16 +16,21 @@ st.title("Column Separator")
 st.subheader("Upload a file")
 
 # Create a file uploader using Streamlit
-file = st.file_uploader(label="hello", type=["txt"], label_visibility="collapsed",key="Seprator")
+file = st.file_uploader(label="hello", type=["txt","xlsx"], label_visibility="collapsed",key="Seprator")
 st.write("[Sample-Input](https://drive.google.com/file/d/19W3Fi40oUZXrA0darbVjs0kQCC4ceTHw/view?usp=share_link)")
 st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/184hvqSVrjfEmQEBs1SSiiCvbZpcURXi5/edit?usp=share_link&ouid=103232618408666892680&rtpof=true&sd=true)")
-if file is not None:
-    data = pd.read_csv(file, delimiter='\t', header=None)
 
-    # Validate number of columns
-#     if data.shape[1] != 2:
-#         st.error("Error: The file must contain exactly 2 columns.")
-#         st.stop()
+if file is not None:
+    file_format = file.name.split('.')[-1]  # Get the file format
+    
+    if file_format == "txt":
+     df = pd.read_csv(file, delimiter='\t',header=None)
+    elif file_format == "xlsx":
+     df = pd.read_excel(file,header=None)
+    else:
+      st.error("Unsupported file format. Please upload a CSV or Excel file.")
+      st.stop()
+
 
     # Check for duplicate values in the first column
     duplicate_values = data[data.columns[0]].duplicated()
