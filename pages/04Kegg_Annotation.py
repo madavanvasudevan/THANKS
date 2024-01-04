@@ -35,7 +35,7 @@ if file3 is not None:
     st.write(df)
      
     # Create an input field for the "map" data
-    map_data = st.text_input("Enter map data (e.g., map123): ")
+    map_data = st.text_input("Enter map data (e.g., map): ")
     if map_data:
         # Escape special characters in the user input
         escaped_map_data = re.escape(map_data)
