@@ -16,7 +16,7 @@ st.write("<p style='text-align:right;'><img src='"+image_url+"' width=250 height
 # Title and file uploader
 st.title("KEGG Annotation")
 st.subheader("Upload a file")
-file3 = st.file_uploader(label="Select a file", type=["txt","xlsx"], label_visibility="collapsed",key="Kegg")
+file3 = st.file_uploader(label="Select a file", type=["txt","xlsx","csv"], label_visibility="collapsed",key="Kegg")
 st.write("[Sample-Input](https://drive.google.com/file/d/14jzsr3Xl6Ekfim1EtWGW5fTDDStSoAvv/view?usp=share_link)")
 st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1cUAqGNQXzRswIsrQ5EeyRc68mVQrWJUb/edit?usp=share_link&ouid=103232618408666892680&rtpof=true&sd=true)")
 
@@ -25,6 +25,8 @@ if file3 is not None:
     
     if file_format == "txt":
      df = pd.read_csv(file3,header=None,delimiter='None')
+    elif file_format == "csv":
+     df = pd.read_csv(file, delimiter=',',header=None)
     elif file_format == "xlsx":
      df = pd.read_excel(file3,header=None,delimiter='None')
     else:
