@@ -19,7 +19,7 @@ st.markdown('''
 st.subheader("Upload a file")
 
 # Create a file uploader using Streamlit
-uploaded_file = st.file_uploader(label="Upload a file", type=["txt","xlsx"], label_visibility="collapsed", key="Pivot")
+uploaded_file = st.file_uploader(label="Upload a file", type=["txt","xlsx","csv"], label_visibility="collapsed", key="Pivot")
 
 st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1TeNzqgGVBdxoAVJeHiWoopngFyut9uUu/edit?usp=share_link&ouid=103232618408666892680&rtpof=true&sd=true)")
 st.write("[Sample-Output](https://drive.google.com/file/d/1fmmqgGaZQ-J8OwGyOI3fLsTZMoYrELNR/view?usp=share_link)")
@@ -30,6 +30,8 @@ if uploaded_file is not None:
         
         if file_format == "txt":
          df = pd.read_csv(uploaded_file, delimiter='\t')
+        elif file_format == "csv":
+         df = pd.read_csv(file, delimiter=',',header=None)
         elif file_format == "xlsx":
          df = pd.read_excel(uploaded_file)
         else:
