@@ -24,8 +24,10 @@ st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1i473hOKzOAW6XI
 if file is not None:
     file_format = file.name.split('.')[-1]  # Get the file format
     
-    if file_format == "csv":
+    if file_format == "txt":
      df = pd.read_csv(file, delimiter='\t',header=None)
+    elif file_format == "csv":
+     df = pd.read_csv(file, delimiter=',',header=None)
     elif file_format == "xlsx":
      df = pd.read_excel(file,header=None)
     else:
