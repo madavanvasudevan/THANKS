@@ -16,7 +16,7 @@ st.title("Column Fusion")
 st.subheader("Upload a file")
 
 # Create a file uploader using Streamlit
-file = st.file_uploader(label="hello", type=["txt","xlsx"], label_visibility="collapsed",key="Fusion")
+file = st.file_uploader(label="hello", type=["txt","xlsx","csv"], label_visibility="collapsed",key="Fusion")
 
 st.write("[Sample-Input](https://drive.google.com/file/d/16MiqpKw0Fm9j38fWf3TIH2elr3nlE2aP/view?usp=sharing)")
 st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1i473hOKzOAW6XICDAImjEIGN8XZ8b8u3/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
@@ -24,7 +24,7 @@ st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1i473hOKzOAW6XI
 if file is not None:
     file_format = file.name.split('.')[-1]  # Get the file format
     
-    if file_format == "txt":
+    if file_format == "csv":
      df = pd.read_csv(file, delimiter='\t',header=None)
     elif file_format == "xlsx":
      df = pd.read_excel(file,header=None)
