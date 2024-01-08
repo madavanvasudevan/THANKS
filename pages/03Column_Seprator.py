@@ -59,8 +59,7 @@ if file is not None:
     column_names = data.columns
     for index, row in data.iterrows():
         # Split values in second column by the specified delimiter
-        split_values = row[column_names[1]].split(delimiter)
-
+        split_values = str(row[column_names[1]]).split(delimiter)
         # Create a new row for each split value, using column 1 name as identifier
         for value in split_values:
             new_row = row.copy()
