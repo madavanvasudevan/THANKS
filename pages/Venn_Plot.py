@@ -3,6 +3,7 @@ import streamlit as st
 import os
 import base64
 from io import BytesIO
+from openpyxl import Workbook
 from venn import venn
 import matplotlib.pyplot as plt
 
@@ -31,8 +32,9 @@ def create_dataframes(uploaded_files):
             # Load the dataframe from the input file
             df = pd.read_excel(input_file)
             
-            # Use a unique identifier for dataframe names
-            df.name = f"{input_file.name}_{len(dataframes) + 1}"
+            # Use a unique identifier for dataframe names without the file extension
+            file_name_without_extension = input_file.name.split('.')[0]
+            df.name = f"{file_name_without_extension}"
             
             # Check if file already exists
             if any(existing_df.name == df.name for existing_df in dataframes):
@@ -44,25 +46,90 @@ def create_dataframes(uploaded_files):
             st.error(f"Error reading {input_file.name}: {e}")
 
     return dataframes
+
+
 # Function to select a single column from all dataframes
 def select_column_from_dataframes(dataframes, column_name):
     selected_columns = {}
     for df in dataframes:
         if column_name.lower() in df.columns.str.lower():
-            selected_columns[df.name] = df[column_name]
+            selected_columns[df.name] = set(df[column_name])  # Convert column to set
         else:
             st.warning(f"Column '{column_name}' not found in '{df.name}' dataframe.")
     return selected_columns
 
-# Function to download dataframes as a single Excel file
-def download_selected_columns_as_excel(selected_columns):
-    # Create a Pandas Excel writer using BytesIO to save the file in memory
+def calculate_set_operations(file_names, *sets):
+    intersections = {}
+    uniques = {}
+    common_elements = sets[0].intersection(*sets[1:])
+
+    # Calculate intersections
+    for i, set1 in enumerate(sets):
+        for j, set2 in enumerate(sets[i + 1:], i + 1):
+            intersection_key = f"Intersection between {file_names[i]} and {file_names[j]}"
+            intersection = set1.intersection(set2)
+            intersections[intersection_key] = intersection
+            common_elements = common_elements.intersection(intersection)
+
+            # Calculate intersections for three sets
+            for k, set3 in enumerate(sets[j + 1:], j + 1):
+                intersection_key = f"Intersection between {file_names[i]}, {file_names[j]}, and {file_names[k]}"
+                intersection = intersection.intersection(set3)
+                intersections[intersection_key] = intersection
+                common_elements = common_elements.intersection(intersection)
+
+                # Calculate intersections for four sets
+                for l, set4 in enumerate(sets[k + 1:], k + 1):
+                    intersection_key = f"Intersection between {file_names[i]}, {file_names[j]}, {file_names[k]}, and {file_names[l]}"
+                    intersection = intersection.intersection(set4)
+                    intersections[intersection_key] = intersection
+                    common_elements = common_elements.intersection(intersection)
+
+                    # Calculate intersections for five sets
+                    for m, set5 in enumerate(sets[l + 1:], l + 1):
+                        intersection_key = f"Intersection between {file_names[i]}, {file_names[j]}, {file_names[k]}, {file_names[l]}, and {file_names[m]}"
+                        intersection = intersection.intersection(set5)
+                        intersections[intersection_key] = intersection
+                        common_elements = common_elements.intersection(intersection)
+
+    # Calculate unique values
+    for i, s in enumerate(sets):
+        unique_key = f"Unique to {file_names[i]}"
+        uniques[unique_key] = s.difference(*[sets[j] for j in range(len(sets)) if j != i])
+
+    # Add common elements key
+    intersections["Common Elements"] = common_elements
+    return intersections, uniques
+
+# Function to download set operations results as an Excel file
+def download_set_operations_as_excel(intersections, uniques):
+    wb = Workbook()
+    ws = wb.active
+    ws.title = 'Set Operations'
+
+    # Write intersections
+    row_num = 1
+    for key, values in intersections.items():
+        ws.cell(row=row_num, column=1, value=key)
+        for col_num, value in enumerate(values, start=2):
+            ws.cell(row=row_num, column=col_num, value=value)
+        row_num += 1
+
+    # Write unique values
+    offset = len(intersections) + 2  # Add some space between intersections and unique values
+    for key, values in uniques.items():
+        ws.cell(row=offset, column=1, value=key)
+        for col_num, value in enumerate(values, start=2):
+            ws.cell(row=offset, column=col_num, value=value)
+        offset += 1
+
+    # Save the workbook to BytesIO
     output_file = BytesIO()
-    with pd.ExcelWriter(output_file, engine="xlsxwriter") as writer:
-        for name, column_data in selected_columns.items():
-            column_data.to_excel(writer, sheet_name=name, index=False)
+    wb.save(output_file)
     output_file.seek(0)
+    
     return output_file
+    
 # Main Streamlit app code
 uploaded_files = st.file_uploader(
     label="hi",
@@ -90,20 +157,12 @@ if uploaded_files is not None:
             st.write("Selected columns:")
             for name, column_data in selected_columns.items():
                 st.write(f"DataFrame: {name}")
-                st.write(column_data)
-            # Add a download button to download the selected columns as a single Excel file
-            download_button = st.button("Download Selected Columns as Excel")
-            if download_button:
-                output_file = download_selected_columns_as_excel(selected_columns)
-                st.download_button(
-                    label="Click here to download",
-                    data=output_file,
-                    file_name="selected_columns.xlsx",
-                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                )
+
             # Create a dictionary of sets for all selected columns
             all_selected_columns = {name: set(column_data) for name, column_data in selected_columns.items()}
-
+            file_names = list(selected_columns.keys())  # Convert keys to a list
+            sets = list(selected_columns.values())       # Convert values to a list
+            
             st.title("Venn Diagram")
             font_size = st.slider("Select font size:", 6, 16, 10)
             # Display the venn diagram
@@ -111,6 +170,19 @@ if uploaded_files is not None:
             venn(all_selected_columns, ax=ax, legend_loc="upper left", fontsize=font_size)
             ax.set_title("Venn Diagram", fontsize=font_size+4)
             st.pyplot(fig)
-                
+
+            intersections, uniques = calculate_set_operations(file_names, *sets)
+
+           # Add a download button to download the set operations results as an Excel file
+            download_button = st.button("Download Set Operations Results as Excel")
+            if download_button:
+                output_file = download_set_operations_as_excel(intersections, uniques)
+                st.download_button(
+                    label="Click here to download",
+                    data=output_file,
+                    file_name="set_operations_results.xlsx",
+                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                )
+
         else:
             st.warning(f"No data found for column '{column_name}'.")
