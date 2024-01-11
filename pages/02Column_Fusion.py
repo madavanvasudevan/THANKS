@@ -62,7 +62,8 @@ if file is not None:
 
     # Iterate through each row in the original DataFrame
     column_name = df.columns
-
+    df[column_name[0]] = df[column_name[0]].astype(str)
+    df[column_name[1]] = df[column_name[1]].astype(str)
     # Groupby column 1 and merge values in column 2 using the delimiter
     new_data = df.groupby(column_name[0], as_index=False).agg({column_name[1]: delimiter.join})
 
