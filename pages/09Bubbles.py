@@ -30,6 +30,7 @@ st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/19UxgXCAMp5VPG_
 if file is not None:
     try:
         df = pd.read_excel(file)
+        st.write(df)
         # Assuming you have a dataframe named 'df' with multiple columns
         selected_columns = ['Category', 'Term', 'Count','PValue','Fold Enrichment']
         new_names = ['count', 'enrichment', 'pvalue', 'pathway', 'class']
@@ -44,7 +45,6 @@ if file is not None:
 
         # Sort the DataFrame by 'count' column in descending order
         df_sorted = df.sort_values(by='count', ascending=False)
-
         # Group the sorted DataFrame by 'class' column and get the top 5 rows for each group
         data = df_sorted.groupby('class').head(5)
         st.write(data)
