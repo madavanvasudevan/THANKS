@@ -107,27 +107,25 @@ def download_set_operations_as_excel(intersections, uniques):
     ws = wb.active
     ws.title = 'Set Operations'
 
-    # Write intersections
-    row_num = 1
+    # Write intersections and unique values in the same column
+    col_num = 1
     for key, values in intersections.items():
-        ws.cell(row=row_num, column=1, value=key)
-        for col_num, value in enumerate(values, start=2):
+        ws.cell(row=1, column=col_num, value=f'{key} (Intersection)')
+        for row_num, value in enumerate(values, start=2):
             ws.cell(row=row_num, column=col_num, value=value)
-        row_num += 1
+        col_num += 1
 
-    # Write unique values
-    offset = len(intersections) + 2  # Add some space between intersections and unique values
     for key, values in uniques.items():
-        ws.cell(row=offset, column=1, value=key)
-        for col_num, value in enumerate(values, start=2):
-            ws.cell(row=offset, column=col_num, value=value)
-        offset += 1
+        ws.cell(row=1, column=col_num, value=f'{key} (Unique)')
+        for row_num, value in enumerate(values, start=2):
+            ws.cell(row=row_num, column=col_num, value=value)
+        col_num += 1
 
     # Save the workbook to BytesIO
     output_file = BytesIO()
     wb.save(output_file)
     output_file.seek(0)
-    
+
     return output_file
     
 # Main Streamlit app code
