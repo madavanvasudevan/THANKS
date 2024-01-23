@@ -30,6 +30,7 @@ st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1YtGlKsGDfmfbL5
 if file is not None:
     try:
         df = pd.read_excel(file)
+        st.write(df)
         # Assuming you have a dataframe named 'df' with multiple columns
         selected_columns = ['Category', 'Term', 'Count','PValue','Fold Enrichment']
         new_names = ['count', 'enrichment', 'pvalue', 'pathway', 'class']
