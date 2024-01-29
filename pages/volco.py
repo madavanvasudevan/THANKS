@@ -5,7 +5,7 @@ import numpy as np
 
 # Function to read and process the uploaded file
 def process_uploaded_file(uploaded_file):
-    data = pd.read_csv(uploaded_file)
+    data = pd.read_excel(uploaded_file)
 
     # Check if the dataframe has at least three columns
     if len(data.columns) < 3:
@@ -159,7 +159,7 @@ if __name__ == '__main__':
     st.title('Enhanced Volcano Plot')
 
     # File Upload
-    uploaded_file = st.file_uploader("Upload file", type=['csv', 'tsv'])
+    uploaded_file = st.file_uploader("Upload file", type=['xlsx'])
     
     if uploaded_file is not None:
         data = process_uploaded_file(uploaded_file)
