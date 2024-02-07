@@ -4,7 +4,18 @@ import streamlit as st
 import io
 
 st.set_page_config(layout="wide")
-
+# Custom CSS styling for the text input
+st.markdown("""
+    <style>
+        /* Add some padding and background color to the input field */
+        .stTextInput>div>div>div>input {
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+""", unsafe_allow_html=True)
 # URL of the image from the web
 image_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREh-y7VJtrA03RIlxLNVxt0DUOZyGBXELj1vqaAm_c1kWOW0RUqdP7QrysLqvZ2tSLUVj6acdWlUI&usqp=CAU&ec=48665698"
 
