@@ -51,9 +51,9 @@ if file is not None:
         df = pd.read_excel(file)
         st.write(df)
         option=df.columns
+        delimiter = st.text_input("Enter the delimiter to split values (e.g., ';'): ")
         Gene = st.selectbox('Select Gene', [None] + list(option), key='gene')
         Term = st.selectbox('Select Term', [None] + list(option), key='term')  
-        delimiter = st.text_input("Enter the delimiter to split values (e.g., ';'): ")
 
         if Gene is not None and Term is not None:
                 # Separate values in the "Genes" column and create a new DataFrame with redundant values
