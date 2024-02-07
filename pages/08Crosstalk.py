@@ -35,10 +35,12 @@ if file is not None:
         st.write(df)
         option=df.columns
         Gene = st.selectbox('Select Gene', [None] + list(option), key='gene')
-        Term = st.selectbox('Select Term', [None] + list(option), key='term')        
+        Term = st.selectbox('Select Term', [None] + list(option), key='term')  
+        delimiter = st.text_input("Enter the delimiter to split values (e.g., ';'): ")
+
         if Gene is not None and Term is not None:
                 # Separate values in the "Genes" column and create a new DataFrame with redundant values
-                genes_split = df[Gene].str.split(', ')
+                genes_split = df[Gene].str.split(delimiter)
                 new_df = pd.DataFrame({
                     'node 1': genes_split.explode().reset_index(drop=True),
                     'interaction': 'regulate',
