@@ -13,6 +13,12 @@ st.markdown("""
             background-color: #f0f0f0;
             border-radius: 5px;
             border: 1px solid #ccc;
+            /* Add outline when focused */
+            outline: none;
+        }
+        /* Add outline when focused */
+        .stTextInput>div>div>div>input:focus {
+            outline: 2px solid dodgerblue;
         }
     </style>
 """, unsafe_allow_html=True)
