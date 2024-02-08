@@ -28,17 +28,25 @@ st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1pQP-InV1VBTYVvQ
 st.write("[Sample-Output](https://drive.google.com/file/d/1wiWWTo6OK2qy75tnD7WQb6GooGXKWVCq/view?usp=share_link)")
 if file is not None:
     df = pd.read_excel(file)
-    gb = GridOptionsBuilder.from_dataframe(df)
+    
+    # Allow users to select columns for export
+    selected_columns = st.multiselect("Select columns to export", df.columns.tolist(), default=df.columns.tolist())
+
+    # Filter the DataFrame based on the selected columns
+    filtered_df = df[selected_columns]
+    
+    gb = GridOptionsBuilder.from_dataframe(filtered_df)
+
     gridOptions = gb.build()
     
     return_mode_value = DataReturnMode.__members__['FILTERED_AND_SORTED']
     update_mode_value = GridUpdateMode.__members__['GRID_CHANGED']
 
-    #Display the grid
+    # Display the grid
     st.header("Streamlit Ag-Grid")
 
     grid_response = AgGrid(
-        df, 
+        filtered_df, 
         gridOptions=gridOptions,
         height=400, 
         width='100%',
@@ -47,14 +55,10 @@ if file is not None:
         horizontal_scrollbar=True
         )
 
-    df = grid_response['data']
-    selected = grid_response['selected_rows']
-    selected_df = pd.DataFrame(selected).apply(pd.to_numeric, errors='coerce')
-
     # Add a download button to the Streamlit app
     if st.button('Proceed to Download'):
         filename = "filtered_data"
-        csv = grid_response['data'].to_csv(index=False)
+        csv = filtered_df.to_csv(index=False)
         b64 = base64.b64encode(csv.encode()).decode()
         href = f'<a href="data:file/csv;base64,{b64}" download="{filename}.csv">Download {filename} CSV file</a>'
-        st.markdown(href, unsafe_allow_html=True) 
+        st.markdown(href, unsafe_allow_html=True)
