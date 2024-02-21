@@ -85,7 +85,7 @@ if file is not None:
             size2 = st.number_input('Selected plotting size', value=400, step=1,key='size2')
             # Customizing the download button based on user preferences
             st.subheader('Plot download Settings')
-            resolution_d = st.slider("Resolution", min_value=100, max_value=2000, value=200, step=50, key='Resolution_d')
+            resolution_d = st.slider("Resolution", min_value=100, max_value=2000, value=800, step=50, key='Resolution_d')
 ####
             # Replace with your p-value column name
             pvalue_column = PValue
