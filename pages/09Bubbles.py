@@ -126,6 +126,15 @@ if file is not None:
  
             # Show the plot in Streamlit
             st.pyplot(fig)
+            # Save the plot as a PNG file
+            fig.savefig("bubble.png.png", format="png", dpi=resolution_d)
+            
+            download_button = st.download_button(
+                    label="Download bubble Plot",
+                    data=open("bubble.png.png", "rb").read(),
+                    file_name="bubble.png.png",
+                    key="bubble_download_button"
+            )
         # Create a download button
         st.markdown(download_excel(df_sorted), unsafe_allow_html=True)
     except Exception as e:
