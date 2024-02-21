@@ -142,7 +142,7 @@ if file is not None:
                     g.add_legend(title='-log10(P-value)')
                     # Show the plots in Streamlit
                     st.pyplot(g)
-                    g.savefig("grid_bubble.png", format="png", dpi=resolution_d)
+                    g.savefig("grid_bubble.png", format="png", dpi=resolution_d,bbox_inches='tight')
                     # Customizing the download button based on user preferences
                     download_button = st.download_button(
                     label="Download grid_bubble Plot",
@@ -157,7 +157,7 @@ if file is not None:
             # Show the plot in Streamlit
             st.pyplot(fig)
             # Save the plot as a PNG file
-            fig.savefig("bubble.png.png", format="png", dpi=resolution_d)
+            fig.savefig("bubble.png.png", format="png", dpi=resolution_d,bbox_inches='tight')
             
             download_button = st.download_button(
                     label="Download bubble Plot",
