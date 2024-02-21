@@ -130,7 +130,7 @@ if file is not None:
             # Show the plot in Streamlit
             st.pyplot(fig)
             # Save the plot as a PNG file
-            fig.savefig("bubble.png.png", format="png", dpi=resolution_d)
+            fig.savefig("bubble.png.png", format="png", dpi=resolution_d,bbox_inches='tight')
             
             download_button = st.download_button(
                     label="Download bubble Plot",
