@@ -89,7 +89,7 @@ if file is not None:
             
             # Customizing the download button based on user preferences
             st.subheader('Plot download Settings')
-            resolution_d = st.slider("Resolution", min_value=100, max_value=2000, value=800, step=50, key='Resolution_d')
+            resolution_d = st.slider("Resolution", min_value=100, max_value=1000, value=600, step=50, key='Resolution_d')
 
 ####
             # Replace with your p-value column name
