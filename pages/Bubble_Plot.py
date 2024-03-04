@@ -77,7 +77,8 @@ if file is not None:
             Selected_ytext_size = st.number_input('Selected ylabel Text Size', value=12, step=1,key='Selected_y')
             Selected_ltext_size = st.number_input('Selected legend Text Size', value=12, step=1,key='Selected_l')
             Selected_ttext_size = st.number_input('Selected Tick_params Text Size', value=12, step=1,key='Selected_T')
-
+            st.subheader('Plot Axis Setting')
+            x_axis_c = st.slider("Width", min_value=1, max_value=1000, value=15,key='x_axis_c')
             # Customizing the download button based on user preferences
             st.subheader('Plot Display Settings')
             width = st.slider("Width", min_value=1, max_value=100, value=15,key='Width')
@@ -127,7 +128,7 @@ if file is not None:
             ax.set_ylabel('Enriched Pathway Name', fontsize=Selected_ytext_size)
 
             scatter_plot.legend(title='-log10(P-value)', bbox_to_anchor=(1, 1), loc='upper left', fontsize=Selected_ltext_size)
-            ax.set_xlim(left=0, right=15)
+            ax.set_xlim(left=0, right=x_axis_c)
 
             # Adjust font size for tick labels
             ax.tick_params(axis='both', labelsize=Selected_ttext_size)  # Adjust the font size here
