@@ -6,27 +6,15 @@ import plotly.graph_objects as go
 
 st.set_page_config(layout="wide")
 
-# Check if the user is logged in
-# if st.session_state.get('logged_in', False):
-#     # st.markdown("Welcome to the protected page!")
-#     # Display the contents of the protected page
-
-def get_img_as_base64(file):
-    with open(file, "rb") as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
-
-img = get_img_as_base64("image.jpg")
-
 # URL of the image from the web
 image_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREh-y7VJtrA03RIlxLNVxt0DUOZyGBXELj1vqaAm_c1kWOW0RUqdP7QrysLqvZ2tSLUVj6acdWlUI&usqp=CAU&ec=48665698"
 
 # Display the image using Streamlit's image function
-st.write("<p style='text-align:right;'><img src='"+image_url+"' width=250 height=175></p>",unsafe_allow_html=True)
+st.write("<p style='text-align:right;'><img src='"+image_url+"' width=250 height=150></p>",unsafe_allow_html=True)
 
-st.title("GeneUp&Down")
+st.title("↑&↓Gene_Plot")
         
-st.subheader("Upload your files")
+st.subheader("Upload a file")
 
 # Define a function that creates a download link for a DataFrame
 def download_excel(data):
