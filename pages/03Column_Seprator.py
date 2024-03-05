@@ -55,18 +55,20 @@ if file is not None:
     # Display the number of rows in the Streamlit app
     st.write("Number of rows: ", all_rows)
 
+    # Iterate through each row in the original DataFrame
     column_names = data.columns
-    # Iterate through rows in the original DataFrame
     for index, row in data.iterrows():
-        # Split values in the second column by the specified delimiter
-        split_values = str(row[column_names[1]]).split(delimiter)
+        # Split values in second column by the specified delimiter
+        split_values = row[column_names[1]].split(delimiter)
 
-        # Create a new DataFrame for the split values
-        split_df = pd.DataFrame({column_names[0]: [row[column_names[0]]] * len(split_values),
-                                column_names[1]: split_values})
+        # Create a new row for each split value, using column 1 name as identifier
+        for value in split_values:
+            new_row = row.copy()
+            new_row[column_names[1]] = value.strip()
+            new_data = new_data.append(new_row, ignore_index=True)
 
-        # Concatenate the new DataFrame to the result
-        new_data = pd.concat([new_data, split_df], ignore_index=True)
+    # Display the resulting DataFrame
+    st.write(new_data)
 
     # Display the resulting DataFrame
     st.write(new_data)
