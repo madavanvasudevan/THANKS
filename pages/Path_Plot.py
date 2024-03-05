@@ -81,7 +81,7 @@ if file is not None:
                 )
 
                 st.plotly_chart(fig)
-        # Create a download link
-        st.markdown(download_excel(data), unsafe_allow_html=True)
+                # Create a download link
+                st.markdown(download_excel(data), unsafe_allow_html=True)
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
