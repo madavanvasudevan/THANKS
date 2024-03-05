@@ -65,7 +65,9 @@ if file is not None:
                 colors = {}
                 for subgroup in subgroups:
                     colors[subgroup] = st.color_picker(f"Choose a color for {subgroup}", "#1f77b4")
-                    
+                
+                x_axis_size = st.slider("Select the size for x-axis labels", 8, 20, 12)
+    
                 # Create a bar graph using Plotly
                 fig = go.Figure()
 
@@ -80,7 +82,7 @@ if file is not None:
 
                 fig.update_layout(
                     title='Enrichment Score by GO Term',
-                    xaxis=dict(title='GO Term'),
+                    xaxis=dict(title='GO Term',tickfont=dict(size=x_axis_size, family="Arial, sans-serif", color='black')),
                     yaxis=dict(title='Enrichment Score'),
                     barmode='group'  # Setting the bar mode to group to separate bars by subgroup
                 )
