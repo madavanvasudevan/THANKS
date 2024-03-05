@@ -69,10 +69,6 @@ if file is not None:
 
     # Display the resulting DataFrame
     st.write(new_data)
-
-    # Display the resulting DataFrame
-    st.write(new_data)
-
     # Get the number of rows in the new DataFrame
     new_rows = new_data.shape[0]
 
