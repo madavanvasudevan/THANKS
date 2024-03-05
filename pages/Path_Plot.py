@@ -29,30 +29,58 @@ file = st.file_uploader(label="hello", type=["xlsx"], label_visibility="collapse
 st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1zhFzNnTdWLSFsuK_Ya-2LCdJXPEa8nfK/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1R6L4yFUPpN9eEUGdiedMir90YSbVari0/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 
+
 if file is not None:
     try:
         df = pd.read_excel(file)
         
-        # Selecting specific columns
-        data = df[['TERM', 'Category','Fold Enrichment']]
+        if df.empty:
+            st.warning("Uploaded file is empty.")
+        else:
+            TERM = st.selectbox('Select TERM Column', [''] + list(df.columns))
+            Category = st.selectbox('Select Category Column', [''] + list(df.columns))
+            Fold_Enrichment = st.selectbox('Select Fold_Enrichment Column', [''] + list(df.columns))
+            if TERM == '' or Category == ''or Fold_Enrichment == '':
+                st.error("Please select values for Gene Name Column, Logfc Column.")
+            else:
+                data = df[[TERM, Category,Fold_Enrichment]].copy()  # Ensure that you create a copy of the DataFrame
 
-        # Renaming the columns
-        new = {
-            'TERM': 'GOterm',
-            'Category': 'Subgroup',
-            'Fold Enrichment': 'Enrichment score'
-        }
+                # Renaming the columns
+                new = {
+                    'TERM': 'GOterm',
+                    'Category': 'Subgroup',
+                    'Fold Enrichment': 'Enrichment score'
+                }
 
-        data = data.rename(columns=new)
-        
-        data['Subgroup'] = data['Subgroup'].replace({
-            r'^GOTERM_BP_DIRECT$': 'Biological process',
-            r'^GOTERM_CC_DIRECT$': 'Cellular component',
-            r'^GOTERM_MF_DIRECT$': 'Molecular function',
-        }, regex=True)
-        
-        st.write(data)
+                data = data.rename(columns=new)
+                
+                data.loc[data['Subgroup'].str.contains('BP|bp'), 'Subgroup'] = 'Biological process'
+                data.loc[data['Subgroup'].str.contains('CC|cc'), 'Subgroup'] = 'Cellular component'
+                data.loc[data['Subgroup'].str.contains('MF|mf'), 'Subgroup'] = 'Molecular function'
 
+                st.write(data)
+                # Create a bar graph using Plotly
+                fig = go.Figure()
+
+                subgroups = data['Subgroup'].unique()
+
+                for subgroup in subgroups:
+                    subgroup_data = data[data['Subgroup'] == subgroup]
+                    fig.add_trace(go.Bar(
+                        x=subgroup_data['GOterm'],
+                        y=subgroup_data['Enrichment score'],
+                        name=subgroup,
+                        marker_color=hash(subgroup)  # Assigning a color based on the subgroup name hash
+                    ))
+
+                fig.update_layout(
+                    title='Enrichment Score by GO Term',
+                    xaxis=dict(title='GO Term'),
+                    yaxis=dict(title='Enrichment Score'),
+                    barmode='group'  # Setting the bar mode to group to separate bars by subgroup
+                )
+
+                st.plotly_chart(fig)
         # Create a download link
         st.markdown(download_excel(data), unsafe_allow_html=True)
     except Exception as e:
