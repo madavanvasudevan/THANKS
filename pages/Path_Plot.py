@@ -60,10 +60,14 @@ if file is not None:
                 data.loc[data['Subgroup'].str.contains('MF|mf'), 'Subgroup'] = 'Molecular function'
 
                 st.write(data)
+                # Color picker for customizing bar colors for each subgroup
+                subgroups = data['Subgroup'].unique()
+                colors = {}
+                for subgroup in subgroups:
+                    colors[subgroup] = st.color_picker(f"Choose a color for {subgroup}", "#1f77b4")
+                    
                 # Create a bar graph using Plotly
                 fig = go.Figure()
-
-                subgroups = data['Subgroup'].unique()
 
                 for subgroup in subgroups:
                     subgroup_data = data[data['Subgroup'] == subgroup]
@@ -71,7 +75,7 @@ if file is not None:
                         x=subgroup_data['GOterm'],
                         y=subgroup_data['Enrichment score'],
                         name=subgroup,
-                        marker_color=hash(subgroup)  # Assigning a color based on the subgroup name hash
+                        marker_color=colors[subgroup]  # Assigning a color selected by the user for each subgroup
                     ))
 
                 fig.update_layout(
