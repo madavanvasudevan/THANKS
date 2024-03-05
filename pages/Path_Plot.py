@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 from io import BytesIO
+import plotly.graph_objects as go
 
 st.set_page_config(layout="wide")
 
