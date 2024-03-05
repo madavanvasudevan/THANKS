@@ -78,7 +78,7 @@ if file is not None:
             Selected_ltext_size = st.number_input('Selected legend Text Size', value=12, step=1,key='Selected_l')
             Selected_ttext_size = st.number_input('Selected Tick_params Text Size', value=12, step=1,key='Selected_T')
             st.subheader('Plot Axis Setting')
-            x_axis_c = st.slider("Width", min_value=1, max_value=1000, value=15,key='x_axis_c')
+            x_axis_c = st.number_input('Selected x axis', value=15, step=1,min_value=1, max_value=1000,key='x_axis_c')
             # Customizing the download button based on user preferences
             st.subheader('Plot Display Settings')
             width = st.slider("Width", min_value=1, max_value=100, value=15,key='Width')
