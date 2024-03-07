@@ -40,7 +40,7 @@ if file is not None:
         
     empty_rows = data.isnull().any(axis=1)
     if empty_rows.any():
-        st.error("Error: 2nd column contains empty rows.")
+        st.error("Error: column contains empty rows.")
         st.stop()
         
     delimiter = st.text_input("Enter the delimiter to split values (e.g., ';'): ")
