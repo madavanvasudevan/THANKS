@@ -58,7 +58,7 @@ if file is not None:
     all_rows = data.shape[0]
 
     # Display the number of rows in the Streamlit app
-    st.write("Number of rows: ", all_rows)
+    st.write("Number of rows values before delimiting: ", all_rows)
 
     # Iterate through each row in the original DataFrame
     column_names = data.columns
@@ -78,7 +78,7 @@ if file is not None:
     new_rows = new_data.shape[0]
 
     # Display the number of rows in the Streamlit app
-    st.write("Number of rows: ", new_rows)
+    st.write("Number of rows values after delimiting: ", new_rows)
     
      # Check if new_rows is equal to new_row
     if all_rows == new_rows:
