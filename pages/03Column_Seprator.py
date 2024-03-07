@@ -37,7 +37,12 @@ if file is not None:
     if duplicate_values.any():
         st.error("Error: The first column contains redundant data.")
         st.stop()
-
+        
+    empty_rows = data.isnull().any(axis=1)
+    if empty_rows.any():
+        st.error("Error: 2nd column contains empty rows.")
+        st.stop()
+        
     delimiter = st.text_input("Enter the delimiter to split values (e.g., ';'): ")
     # Check if delimiter is non-alphanumeric
     if delimiter and delimiter.isalnum():
