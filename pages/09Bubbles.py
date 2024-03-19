@@ -62,12 +62,12 @@ if file is not None:
                 selected_df.drop(Category, axis=1, inplace=True)
     # Checkbox for executing groupby and head(5) only if checked
                 execute_groupby = st.checkbox("Select Only Top5 from class")
-                    if execute_groupby:
-                        selected_df = selected_df.groupby('class').head(5)
-                    # Display the modified DataFrame
-                    # Sort the DataFrame by 'count' column in descending order
-                    df_sorted = selected_df.sort_values(by=[Fold_Enrichment], ascending=False)
-                    df_sorted[PValue] = -np.log10(df_sorted[PValue])  
+            if execute_groupby:
+                selected_df = selected_df.groupby('class').head(5)
+            # Display the modified DataFrame
+            # Sort the DataFrame by 'count' column in descending order
+            df_sorted = selected_df.sort_values(by=[Fold_Enrichment], ascending=False)
+            df_sorted[PValue] = -np.log10(df_sorted[PValue])  
 ####            
             st.subheader('Select Color Option')
             Low_color = st.color_picker('Select Low Color', value='#0000FF',key='low_C')
