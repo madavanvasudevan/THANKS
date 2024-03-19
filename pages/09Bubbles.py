@@ -60,12 +60,14 @@ if file is not None:
                 selected_df['class'].fillna(selected_df[Category], inplace=True)
                 selected_df['class'].replace({'REACTOME_PATHWAY': 'RC', 'KEGG_PATHWAY': 'KG'}, inplace=True)
                 selected_df.drop(Category, axis=1, inplace=True)
-    
-            # Display the modified DataFrame
-            # Sort the DataFrame by 'count' column in descending order
-            df_sorted = selected_df.sort_values(by=[Fold_Enrichment], ascending=False)
-            df_sorted[PValue] = -np.log10(df_sorted[PValue])
-            
+    # Checkbox for executing groupby and head(5) only if checked
+                execute_groupby = st.checkbox("Execute groupby and head(5)")
+                if execute_groupby:
+                    selected_df = selected_df.groupby('class').head(5)
+                    # Display the modified DataFrame
+                    # Sort the DataFrame by 'count' column in descending order
+                    df_sorted = selected_df.sort_values(by=[Fold_Enrichment], ascending=False)
+                    df_sorted[PValue] = -np.log10(df_sorted[PValue])
 ####            
             st.subheader('Select Color Option')
             Low_color = st.color_picker('Select Low Color', value='#0000FF',key='low_C')
