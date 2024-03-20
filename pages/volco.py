@@ -181,7 +181,7 @@ if __name__ == '__main__':
             # Add sliders for x and y axis ranges
             st.subheader('Axis Range Selection')
             x_axis_range = st.slider('X-Axis Range', min_value=-15, max_value=15, value=(-10, 10),key='x_axis')
-            y_axis_range = st.slider('Y-Axis Range', min_value=0, max_value=10, value=(0, 5),key='y_axis')
+            y_axis_range = st.slider('Y-Axis Range', min_value=0, max_value=10,step=0.5, value=(0, 5),key='y_axis')
 
             st.subheader('p_value')
             p_value_threshold = st.number_input('Enter the p_value_threshold value:', value=0.05, step=0.5,key='p_value')
