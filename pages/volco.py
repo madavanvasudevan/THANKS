@@ -3,11 +3,12 @@ import pandas as pd
 import plotly.graph_objects as go
 import numpy as np
 
+# Add style to the container
 st.markdown(
     f"""
     <style>
         .stTextInput {{
-            border: 2px solid #3366ff; /* Add border around the text input */
+            border: 2px solid red; /* Change border color to red */
             border-radius: 5px; /* Optional: Add border radius for rounded corners */
             padding: 5px; /* Optional: Add padding */
             box-shadow: 2px 2px 5px grey; /* Optional: Add shadow */
@@ -16,6 +17,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 # Function to read and process the uploaded file
 def process_uploaded_file(uploaded_file):
     data = pd.read_excel(uploaded_file)
