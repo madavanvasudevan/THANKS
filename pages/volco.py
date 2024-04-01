@@ -9,6 +9,8 @@ st.markdown(
     <style>
         .stTextInput {{
             border: 2px solid red; /* Change border color to red */
+            border-radius: 5px; /* Optional: Add border radius for rounded corners */
+            padding: 5px; /* Optional: Add padding */
             box-shadow: 2px 2px 5px grey; /* Optional: Add shadow */
         }}
     </style>
