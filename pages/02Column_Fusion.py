@@ -25,19 +25,14 @@ if file is not None:
     file_format = file.name.split('.')[-1]  # Get the file format
     
     if file_format == "txt":
-     df = pd.read_csv(file, delimiter='\t',header=None)
+     df = pd.read_csv(file, delimiter='\t')
     elif file_format == "csv":
-     df = pd.read_csv(file, delimiter=',',header=None)
+     df = pd.read_csv(file, delimiter=',')
     elif file_format == "xlsx":
-     df = pd.read_excel(file,header=None)
+     df = pd.read_excel(file)
     else:
       st.error("Unsupported file format. Please upload a CSV or Excel file.")
       st.stop()
-
-    # Validate number of columns
-    if df.shape[1] != 2:
-        st.error("Error: The file must contain exactly 2 columns.")
-        st.stop()
 
     # Check for duplicate values in the first column
     duplicate_values = df[df.columns[0]].duplicated()
@@ -60,12 +55,11 @@ if file is not None:
     # Display the number of rows in the Streamlit app
     st.write("Number of rows: ", all_rows)
 
-    # Iterate through each row in the original DataFrame
-    column_name = df.columns
-    df[column_name[0]] = df[column_name[0]].astype(str)
-    df[column_name[1]] = df[column_name[1]].astype(str)
-    # Groupby column 1 and merge values in column 2 using the delimiter
-    new_data = df.groupby(column_name[0], as_index=False).agg({column_name[1]: delimiter.join})
+    # Convert columns to string type if not already
+    df = df.astype(str)
+
+    # Group by the first column and concatenate values in all other columns using the delimiter
+    new_data = df.groupby(df.columns[0], as_index=False).agg({col: delimiter.join for col in df.columns[1:]})
 
     # Display the resulting DataFrame
     st.write(new_data)
