@@ -14,7 +14,7 @@ st.write("<p style='text-align:right;'><img src='"+image_url+"' width=250 height
 
 # Define a Streamlit app title and description
 st.title("Network Maker")
-st.subheader("Upload your files")
+st.subheader("Upload a file")
 # Function to trigger file download
 def download_file(file_path, file_name):
     with open(file_path, "rb") as file:
