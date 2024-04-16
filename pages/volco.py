@@ -176,8 +176,7 @@ if __name__ == '__main__':
 
     # File Upload
     uploaded_file = st.file_uploader(label="hello1", label_visibility="collapsed", type=['xlsx'])
-    st.write("[Sample-Input](https://drive.google.com/file/d/16MiqpKw0Fm9j38fWf3TIH2elr3nlE2aP/view?usp=sharing)")
-    st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1i473hOKzOAW6XICDAImjEIGN8XZ8b8u3/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
+    st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1dahET6rvdM4tT-VYX5bFPpVtDKvuLuKX/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 
     if uploaded_file is not None:
         data = process_uploaded_file(uploaded_file)
