@@ -12,9 +12,7 @@ image_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREh-y7VJtrA03
 st.write("<p style='text-align:right;'><img src='"+image_url+"' width=250 height=150></p>",unsafe_allow_html=True)
 
 # Web App Title
-st.markdown('''
-# **Pivot App**
-''')
+st.title("Pivot App")
 
 st.subheader("Upload a file")
 
