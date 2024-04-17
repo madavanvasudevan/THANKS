@@ -26,8 +26,7 @@ def download_excel(data):
             return href
 # Create a file uploader using Streamlit
 file = st.file_uploader(label="hello", type=["xlsx"], label_visibility="collapsed")
-st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1dZbmL27Wg6dWfYmpKFJDFqHg6EkNb4yA/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
-st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1I3HsN0pvUrluHKl20TDry6TCA5tRA_oj/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
+st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/1uosww0G-VFF1XNQxWD33HZFAcwmkYv3X/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 if file is not None:
     try:
         df = pd.read_excel(file)
