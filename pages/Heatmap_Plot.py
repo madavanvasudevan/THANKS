@@ -2,6 +2,8 @@ import base64
 import pandas as pd
 import streamlit as st
 from io import BytesIO
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 st.set_page_config(layout="wide")
 
@@ -25,31 +27,49 @@ def download_excel(data):
             return href
 # Create a file uploader using Streamlit
 file = st.file_uploader(label="hello", type=["xlsx"], label_visibility="collapsed",key="Heatmap")
-st.write('Users can use this app to plot: heatmap,circular_heatmap,correlation coefficient')
 st.write("[Sample-Input](https://docs.google.com/spreadsheets/d/18GRS4nCIa0gtWJPO-fRSDVU-y81V1_q_/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 st.write("[Sample-Output](https://docs.google.com/spreadsheets/d/1ePqmO6YCP9UYO-cwt-3F7rVm6mkXboQp/edit?usp=sharing&ouid=103232618408666892680&rtpof=true&sd=true)")
 if file is not None:
     try:
         df = pd.read_excel(file)
-        # Get user input for column selection
-        column_range = st.text_input("Enter the range of columns (start-end):")
+        st.write(df)  
+        
+        # Identify non-numerical columns for Gene Symbol selection
+        non_numerical_columns = df.select_dtypes(exclude=['number']).columns.tolist()
+        
+        # Identify numerical columns for data selection
+        numerical_columns = df.select_dtypes(include=['number']).columns.tolist()
 
-        # Check if the column range is valid
-        if column_range:
-            try:
-                start_column, end_column = map(int, column_range.split('-'))
+        # Column selection
+        st.subheader('Column Selection')
+        Gene_Symbol = st.selectbox('Select Gene Symbol Column', non_numerical_columns)
+        df_columns = st.multiselect('Select Data Columns', numerical_columns)
+        
+        if Gene_Symbol and df_columns:
+            # Set the index to the selected Gene Symbol column
+            df.set_index(Gene_Symbol, inplace=True)
+            
+            # Create a new DataFrame with the selected columns
+            new_df = df[df_columns]
+            
+            # Display the new DataFrame
+            st.write(new_df)
+            # User inputs for heatmap customization
+        st.subheader('Heatmap Customization')
+        
+        row_cluster = st.checkbox('Row Clustering', value=True)
+        col_cluster = st.checkbox('Column Clustering', value=True)
+        cmap = st.selectbox('Color Map', ['viridis', 'plasma', 'inferno', 'magma', 'cividis'])
+        method = st.selectbox('Clustering Method', ['single', 'complete', 'average', 'weighted', 'centroid', 'median', 'ward'])
+        #Streamlit App
+        st.title('Heatmap')
+        # Button to generate the heatmap
+        if st.button('Generate Heatmap'):
+            # Create a clustered heatmap using seaborn with user inputs
+            fig = sns.clustermap(new_df, cmap=cmap, method=method, figsize=(16, 16), fmt=".2f", cbar_kws={'label': 'Color Scale'}, row_cluster=row_cluster, col_cluster=col_cluster)
+            
+            # Show the plot in Streamlit
+            st.pyplot(fig)
 
-                if 1 <= start_column <= end_column <= len(df.columns):
-                    # Select the columns
-                    data = df.iloc[:, start_column - 1 : end_column]
-                    data["Gene_Symbol"] = df.iloc[:, 1]
-                    st.write(data)
-                    # Create a download button
-                    st.markdown(download_excel(data), unsafe_allow_html=True)
-                else:
-                    st.error("Invalid column range. Please enter a valid range.")
-
-            except ValueError:
-                st.error("Invalid input format. Please use the format 'start-end' (e.g., 1-3).")
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
