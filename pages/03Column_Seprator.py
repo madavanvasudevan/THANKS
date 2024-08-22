@@ -33,10 +33,10 @@ if file is not None:
 
 
     # Check for duplicate values in the first column
-    duplicate_values = data[data.columns[0]].duplicated()
-    if duplicate_values.any():
-        st.error("Error: The first column contains redundant data.")
-        st.stop()
+    # duplicate_values = data[data.columns[0]].duplicated()
+    # if duplicate_values.any():
+    #     st.error("Error: The first column contains redundant data.")
+    #     st.stop()
         
     empty_rows = data.isnull().any(axis=1)
     if empty_rows.any():
@@ -63,15 +63,20 @@ if file is not None:
     # Iterate through each row in the original DataFrame
     column_names = data.columns
     for index, row in data.iterrows():
-        # Split values in second column by the specified delimiter
+        # Split values in the second column by the specified delimiter
         split_values = row[column_names[1]].split(delimiter)
-
+        
         # Create a new row for each split value, using column 1 name as identifier
         for value in split_values:
             new_row = row.copy()
             new_row[column_names[1]] = value.strip()
             new_data = new_data.append(new_row, ignore_index=True)
-
+    # Convert the relevant columns to lowercase (or uppercase) for case-insensitive comparison
+    new_data[column_names[0]] = new_data[column_names[0]].str.upper()
+    new_data[column_names[1]] = new_data[column_names[1]].str.upper()
+    # Remove duplicates based on all columns
+    new_data = new_data.drop_duplicates()
+    
     # Display the resulting DataFrame
     st.write(new_data)
     # Get the number of rows in the new DataFrame
