@@ -37,6 +37,11 @@ if file is not None:
     # if duplicate_values.any():
     #     st.error("Error: The first column contains redundant data.")
     #     st.stop()
+     
+    # Validate number of columns
+    if data.shape[1] != 2:
+        st.error("Error: The file must contain exactly 2 columns.")
+        st.stop()   
         
     empty_rows = data.isnull().any(axis=1)
     if empty_rows.any():
