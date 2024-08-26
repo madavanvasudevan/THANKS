@@ -258,6 +258,85 @@ if uploaded_file is not None:
                 b64 = base64.b64encode(tsv.encode()).decode()
                 href = f'<a href="data:file/tsv;base64,{b64}" download="75th_percentile_values.tsv">Download TSV file</a>'
                 st.markdown(href, unsafe_allow_html=True)
+        # Add a button to calculate the count values
+        if st.button('Calculate Count Values'):
+            # Get the list of column names except for the first column
+            columns = [col for col in df.columns if col != df.columns[0]]
+            
+            # Group the DataFrame by the first column and calculate the count for each column
+            results = []
+            for col in columns:
+                id_groups = df.groupby(df.columns[0])
+                count_values = id_groups[col].count()
+                # Combine the results into a single DataFrame
+                results_df = pd.DataFrame(count_values)
+                results_df.columns = [f"{col}_count"]
+                # Add the results for this column to the overall results list
+                results.append(results_df)
 
+            # Combine the results for all columns into one DataFrame
+            combined_results = pd.concat(results, axis=1)
+            st.header('**Count Values**')
+            st.write(combined_results)
+
+            # Download button for count values
+            tsv = combined_results.reset_index().to_csv(index=True, sep='\t')
+            b64 = base64.b64encode(tsv.encode()).decode()
+            href = f'<a href="data:file/tsv;base64,{b64}" download="count_values.tsv">Download TSV file</a>'
+            st.markdown(href, unsafe_allow_html=True)
+            
+        # Add a button to calculate the standard deviation values
+        if st.button('Calculate Standard Deviation Values'):
+            # Get the list of column names except for the first column
+            columns = [col for col in df.columns if col != df.columns[0]]
+            
+            # Group the DataFrame by the first column and calculate the standard deviation for each column
+            results = []
+            for col in columns:
+                id_groups = df.groupby(df.columns[0])
+                std_dev_values = id_groups[col].std()
+                # Combine the results into a single DataFrame
+                results_df = pd.DataFrame(std_dev_values)
+                results_df.columns = [f"{col}_std_dev"]
+                # Add the results for this column to the overall results list
+                results.append(results_df)
+
+            # Combine the results for all columns into one DataFrame
+            combined_results = pd.concat(results, axis=1)
+            st.header('**Standard Deviation**')
+            st.write(combined_results)
+
+            # Download button for standard deviation values
+            tsv = combined_results.reset_index().to_csv(index=True, sep='\t')
+            b64 = base64.b64encode(tsv.encode()).decode()
+            href = f'<a href="data:file/tsv;base64,{b64}" download="std_dev_values.tsv">Download TSV file</a>'
+            st.markdown(href, unsafe_allow_html=True)
+                
+        # Add a button to calculate the variance values
+        if st.button('Calculate Variance Values'):
+            # Get the list of column names except for the first column
+            columns = [col for col in df.columns if col != df.columns[0]]
+            
+            # Group the DataFrame by the first column and calculate the variance for each column
+            results = []
+            for col in columns:
+                id_groups = df.groupby(df.columns[0])
+                variance_values = id_groups[col].var()
+                # Combine the results into a single DataFrame
+                results_df = pd.DataFrame(variance_values)
+                results_df.columns = [f"{col}_variance"]
+                # Add the results for this column to the overall results list
+                results.append(results_df)
+
+            # Combine the results for all columns into one DataFrame
+            combined_results = pd.concat(results, axis=1)
+            st.header('**Variance**')
+            st.write(combined_results)
+
+            # Download button for variance values
+            tsv = combined_results.reset_index().to_csv(index=True, sep='\t')
+            b64 = base64.b64encode(tsv.encode()).decode()
+            href = f'<a href="data:file/tsv;base64,{b64}" download="variance_values.tsv">Download TSV file</a>'
+            st.markdown(href, unsafe_allow_html=True)
 else: 
     st.info('Awaiting for CSV file to be uploaded.')
