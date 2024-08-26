@@ -40,15 +40,15 @@ if uploaded_file is not None:
         df_numeric = df.dropna(axis=1, how='all').apply(pd.to_numeric, errors='coerce')
         
         if df_numeric.shape[1] > 1:  # At least one numeric column (excluding the first column)
-            st.header('**Input DataFrame**')
+            st.header('**Input Data**')
             st.write(df)
      
             # Add a button to calculate the minimum values
             if st.button('Calculate Minimum Values'):
-                # Calculate the minimum value for each column by the first column
+                # Calculate the minimum value for each column 
                 # Get the list of column names except for the first column
                 columns = [col for col in df.columns if col != df.columns[0]]
-                # Group the DataFrame by the first column and calculate the minimum value for each column
+                # Group the DataFrame  and calculate the minimum value for each column
                 results = []
                 for col in columns:
                     id_groups = df.groupby(df.columns[0])
@@ -61,7 +61,7 @@ if uploaded_file is not None:
     
                 # Combine the results for all columns into one DataFrame
                 combined_results = pd.concat(results, axis=1)
-                st.header('**Minimum Value by the first column**')
+                st.header('**Minimum Value **')
                 st.write(combined_results)
                 
                 # Download button for minimum values
@@ -72,10 +72,10 @@ if uploaded_file is not None:
                 
             # Add a button to calculate the maximum values
             if st.button('Calculate Maximum Values'):
-                # Calculate the maximum value for each column by the first column
+                # Calculate the maximum value for each column 
                 # Get the list of column names except for the first column
                 columns = [col for col in df.columns if col != df.columns[0]]
-                # Group the DataFrame by the first column and calculate the maximum value for each column
+                # Group the DataFrame  and calculate the maximum value for each column
                 results = []
                 for col in columns:
                     id_groups = df.groupby(df.columns[0])
@@ -88,7 +88,7 @@ if uploaded_file is not None:
     
                 # Combine the results for all columns into one DataFrame
                 combined_results = pd.concat(results, axis=1)
-                st.header('**Maximum Value by the first column**')
+                st.header('**Maximum Value **')
                 st.write(combined_results)
     
                 # Download button for maximum values
@@ -99,10 +99,10 @@ if uploaded_file is not None:
             
             # Add a button to calculate the sum values
             if st.button('Calculate Sum Values'):
-                # Calculate the sum value for each column by the first column
+                # Calculate the sum value for each column 
                 # Get the list of column names except for the first column
                 columns = [col for col in df.columns if col != df.columns[0]]
-                # Group the DataFrame by the first column and calculate the sum value for each column
+                # Group the DataFrame  and calculate the sum value for each column
                 results = []
                 for col in columns:
                     id_groups = df.groupby(df.columns[0])
@@ -115,7 +115,7 @@ if uploaded_file is not None:
     
                 # Combine the results for all columns into one DataFrame
                 combined_results = pd.concat(results, axis=1)
-                st.header('**Sum Value by the first column**')
+                st.header('**Sum Value **')
                 st.write(combined_results)
     
                 # Download button for sum values
@@ -126,10 +126,10 @@ if uploaded_file is not None:
                 
             # Add a button to calculate the mean values
             if st.button('Calculate Mean Values'):
-                # Calculate the mean value for each column by the first column
+                # Calculate the mean value for each column 
                 # Get the list of column names except for the first column
                 columns = [col for col in df.columns if col != df.columns[0]]
-                # Group the DataFrame by the first column and calculate the mean value for each column
+                # Group the DataFrame  and calculate the mean value for each column
                 results = []
                 for col in columns:
                     id_groups = df.groupby(df.columns[0])
@@ -142,7 +142,7 @@ if uploaded_file is not None:
     
                 # Combine the results for all columns into one DataFrame
                 combined_results = pd.concat(results, axis=1)
-                st.header('**Mean Value by the first column**')
+                st.header('**Mean Value **')
                 st.write(combined_results)
     
                 # Download button for mean values
@@ -153,10 +153,10 @@ if uploaded_file is not None:
                 
             # Add a button to calculate the median values
             if st.button('Calculate Median Values'):
-                # Calculate the median value for each column by the first column
+                # Calculate the median value for each column 
                 # Get the list of column names except for the first column
                 columns = [col for col in df.columns if col != df.columns[0]]
-                # Group the DataFrame by the first column and calculate the median value for each column
+                # Group the DataFrame  and calculate the median value for each column
                 results = []
                 for col in columns:
                     id_groups = df.groupby(df.columns[0])
@@ -169,7 +169,7 @@ if uploaded_file is not None:
     
                 # Combine the results for all columns into one DataFrame
                 combined_results = pd.concat(results, axis=1)
-                st.header('**Median Value by the first column**')
+                st.header('**Median Value **')
                 st.write(combined_results)
     
                 # Download button for median values
@@ -180,10 +180,10 @@ if uploaded_file is not None:
                 
             # Add a button to calculate the mode values
             if st.button('Calculate Mode Values'):
-                # Calculate the mode value for each column by the first column
+                # Calculate the mode value for each column 
                 # Get the list of column names except for the first column
                 columns = [col for col in df.columns if col != df.columns[0]]
-                # Group the DataFrame by the first column and calculate the mode value for each column
+                # Group the DataFrame  and calculate the mode value for each column
                 results = []
                 for col in columns:
                     id_groups = df.groupby(df.columns[0])
@@ -196,7 +196,7 @@ if uploaded_file is not None:
     
                 # Combine the results for all columns into one DataFrame
                 combined_results = pd.concat(results, axis=1)
-                st.header('**Mode Value by the first column**')
+                st.header('**Mode Value **')
                 st.write(combined_results)
     
                 # Download button for mode values
@@ -207,10 +207,10 @@ if uploaded_file is not None:
                 
             # Add a button to calculate the percentile 50 values
             if st.button('Calculate Percentile 50 Values'):
-                # Calculate the percentile 50 value for each column by the first column
+                # Calculate the percentile 50 value for each column 
                 # Get the list of column names except for the first column
                 columns = [col for col in df.columns if col != df.columns[0]]
-                # Group the DataFrame by the first column and calculate the percentile 50 value for each column
+                # Group the DataFrame  and calculate the percentile 50 value for each column
                 results = []
                 for col in columns:
                     id_groups = df.groupby(df.columns[0])
@@ -223,7 +223,7 @@ if uploaded_file is not None:
     
                 # Combine the results for all columns into one DataFrame
                 combined_results = pd.concat(results, axis=1)
-                st.header('**Percentile 50 Value by the first column**')
+                st.header('**Percentile 50 Value **')
                 st.write(combined_results)
     
                 # Download button for percentile 50 values
@@ -234,10 +234,10 @@ if uploaded_file is not None:
             
             # Add a button to calculate the 75th percentile values
             if st.button('Calculate 75th Percentile Values'):
-                # Calculate the 75th percentile value for each column by the first column
+                # Calculate the 75th percentile value for each column 
                 # Get the list of column names except for the first column
                 columns = [col for col in df.columns if col != df.columns[0]]
-                # Group the DataFrame by the first column and calculate the 75th percentile value for each column
+                # Group the DataFrame  and calculate the 75th percentile value for each column
                 results = []
                 for col in columns:
                     id_groups = df.groupby(df.columns[0])
@@ -250,7 +250,7 @@ if uploaded_file is not None:
     
                 # Combine the results for all columns into one DataFrame
                 combined_results = pd.concat(results, axis=1)
-                st.header('**75th Percentile Value by the first column**')
+                st.header('**75th Percentile Value **')
                 st.write(combined_results)
     
                 # Download button for 75th percentile values
@@ -263,7 +263,7 @@ if uploaded_file is not None:
             # Get the list of column names except for the first column
             columns = [col for col in df.columns if col != df.columns[0]]
             
-            # Group the DataFrame by the first column and calculate the count for each column
+            # Group the DataFrame  and calculate the count for each column
             results = []
             for col in columns:
                 id_groups = df.groupby(df.columns[0])
@@ -290,7 +290,7 @@ if uploaded_file is not None:
             # Get the list of column names except for the first column
             columns = [col for col in df.columns if col != df.columns[0]]
             
-            # Group the DataFrame by the first column and calculate the standard deviation for each column
+            # Group the DataFrame  and calculate the standard deviation for each column
             results = []
             for col in columns:
                 id_groups = df.groupby(df.columns[0])
@@ -317,7 +317,7 @@ if uploaded_file is not None:
             # Get the list of column names except for the first column
             columns = [col for col in df.columns if col != df.columns[0]]
             
-            # Group the DataFrame by the first column and calculate the variance for each column
+            # Group the DataFrame  and calculate the variance for each column
             results = []
             for col in columns:
                 id_groups = df.groupby(df.columns[0])
