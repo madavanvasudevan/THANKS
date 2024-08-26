@@ -61,7 +61,7 @@ if uploaded_file is not None:
     
                 # Combine the results for all columns into one DataFrame
                 combined_results = pd.concat(results, axis=1)
-                st.header('**Minimum Value **')
+                st.header('**Minimum Value**')
                 st.write(combined_results)
                 
                 # Download button for minimum values
@@ -88,7 +88,7 @@ if uploaded_file is not None:
     
                 # Combine the results for all columns into one DataFrame
                 combined_results = pd.concat(results, axis=1)
-                st.header('**Maximum Value **')
+                st.header('**Maximum Value**')
                 st.write(combined_results)
     
                 # Download button for maximum values
@@ -115,7 +115,7 @@ if uploaded_file is not None:
     
                 # Combine the results for all columns into one DataFrame
                 combined_results = pd.concat(results, axis=1)
-                st.header('**Sum Value **')
+                st.header('**Sum Value**')
                 st.write(combined_results)
     
                 # Download button for sum values
@@ -142,7 +142,7 @@ if uploaded_file is not None:
     
                 # Combine the results for all columns into one DataFrame
                 combined_results = pd.concat(results, axis=1)
-                st.header('**Mean Value **')
+                st.header('**Mean Value**')
                 st.write(combined_results)
     
                 # Download button for mean values
@@ -169,7 +169,7 @@ if uploaded_file is not None:
     
                 # Combine the results for all columns into one DataFrame
                 combined_results = pd.concat(results, axis=1)
-                st.header('**Median Value **')
+                st.header('**Median Value**')
                 st.write(combined_results)
     
                 # Download button for median values
@@ -196,7 +196,7 @@ if uploaded_file is not None:
     
                 # Combine the results for all columns into one DataFrame
                 combined_results = pd.concat(results, axis=1)
-                st.header('**Mode Value **')
+                st.header('**Mode Value**')
                 st.write(combined_results)
     
                 # Download button for mode values
@@ -223,7 +223,7 @@ if uploaded_file is not None:
     
                 # Combine the results for all columns into one DataFrame
                 combined_results = pd.concat(results, axis=1)
-                st.header('**Percentile 50 Value **')
+                st.header('**Percentile 50 Value**')
                 st.write(combined_results)
     
                 # Download button for percentile 50 values
@@ -250,7 +250,7 @@ if uploaded_file is not None:
     
                 # Combine the results for all columns into one DataFrame
                 combined_results = pd.concat(results, axis=1)
-                st.header('**75th Percentile Value **')
+                st.header('**75th Percentile Value**')
                 st.write(combined_results)
     
                 # Download button for 75th percentile values
